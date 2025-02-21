@@ -6,7 +6,7 @@ export const pl = {
     learnMore: 'Dowiedz się więcej',
   },
   nav: {
-    home: '',
+    home: 'STRONA GŁÓWNA',
     organizeParty: 'ZORGANIZUJ IMPREZĘ',
     blog: 'BLOG',
     faq: 'FAQ',
@@ -23,6 +23,19 @@ export const pl = {
       title: 'WYBIERZ SWÓJ PAKIET',
       toDestroy: 'DO ZDEMOLOWANIA',
       tools: 'NARZĘDZIA',
+      bestSeller: 'NAJCZĘŚCIEJ WYBIERANY',
+      more: 'więcej',
+      bookNow: 'REZERWUJ TERAZ',
+      additionalItems: {
+        title: 'Dodatkowe przedmioty',
+        subtitle: 'Możesz dodać dodatkowe przedmioty do swojego pakietu',
+        items: {
+          glass: 'Szkło (10 szt.)',
+          furniture: 'Mebel (1 szt.)',
+          electronic: 'Sprzęt RTV/AGD (1 szt.)',
+          gloves: 'Rękawice ochronne'
+        }
+      },
       packages: {
         easy: {
           name: 'BUŁKA Z MASŁEM',
@@ -77,23 +90,6 @@ export const pl = {
           rękawice: 'Rękawice ochronne'
         }
       },
-      more: 'więcej...',
-      bookNow: 'REZERWUJ TERAZ',
-      bestSeller: 'BESTSELLER!',
-      additionalItems: {
-        title: 'Dodatki',
-        subtitle: 'Wybierz dodatkowe przedmioty, które chcesz zniszczyć wraz z wybranym pakietem',
-        items: [
-          { name: 'szklanych przedmiotów', quantity: '10', price: '50 PLN' },
-          { name: 'Klawiatura', quantity: '1', price: '20 PLN' },
-          { name: 'TV/monitor', quantity: '1', price: '100 PLN' },
-          { name: 'Meble', quantity: '1', price: '120 PLN' },
-          { name: 'Drukarka', quantity: '1', price: '50 PLN' },
-          { name: 'Mysz komputerowa', quantity: '1', price: '10 PLN' },
-          { name: 'Telefon', quantity: '1', price: '30 PLN' },
-          { name: 'Nagranie GoPro', quantity: '1', price: '50 PLN' }
-        ]
-      }
     },
     lounge: {
       title: 'STREFA RELAKSU',
@@ -115,4 +111,4 @@ export const pl = {
       subtitle: 'Zaufali nam',
     }
   }
-} as const;
+};

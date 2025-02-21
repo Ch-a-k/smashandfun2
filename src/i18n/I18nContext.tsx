@@ -3,9 +3,9 @@
 import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import { pl } from './locales/pl';
 import { en } from './locales/en';
+import { Translations } from './types';
 
 type Locale = 'pl' | 'en';
-type Translations = typeof pl;
 
 interface I18nContextType {
   locale: Locale;

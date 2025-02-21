@@ -47,7 +47,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<ToastState>(null);
   const [validationErrors, setValidationErrors] = useState<ValidationError>({});
-  const validationTimer = useRef<NodeJS.Timeout>();
+  const validationTimer = useRef<NodeJS.Timeout | null>(null);
 
   const validateForm = (): boolean => {
     const errors: ValidationError = {};

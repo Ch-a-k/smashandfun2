@@ -23,6 +23,19 @@ export const en = {
       title: 'CHOOSE YOUR PACKAGE',
       toDestroy: 'TO DESTROY',
       tools: 'TOOLS',
+      bestSeller: 'BEST SELLER',
+      more: 'more',
+      bookNow: 'BOOK NOW',
+      additionalItems: {
+        title: 'Additional Items',
+        subtitle: 'You can add additional items to your package',
+        items: {
+          glass: 'Glass (10 pcs)',
+          furniture: 'Furniture (1 pc)',
+          electronic: 'Electronic Device (1 pc)',
+          gloves: 'Safety gloves'
+        }
+      },
       packages: {
         easy: {
           name: 'PIECE OF CAKE',
@@ -51,9 +64,8 @@ export const en = {
           name: 'HARD',
           items: [
             '35 glass items',
-            '5 pieces of furniture',
-            '8 electronic devices',
-            '10 small electronic devices'
+            '4 pieces of furniture',
+            '7 electronic devices'
           ],
           difficulty: 'EXTREME'
         }
@@ -70,40 +82,23 @@ export const en = {
         '180': 'up to 180 min'
       },
       equipment: {
-        included: 'Equipment included:',
+        included: 'Included:',
         items: {
           ubranie: 'Protective clothing',
           kask: 'Safety helmet',
           rękawice: 'Safety gloves'
         }
-      },
-      more: 'more...',
-      bookNow: 'BOOK NOW',
-      bestSeller: 'BESTSELLER!',
-      additionalItems: {
-        title: 'Additional Items',
-        subtitle: 'Choose additional items to destroy with your selected package',
-        items: [
-          { name: 'glass items', quantity: '10', price: '50 PLN' },
-          { name: 'Keyboard', quantity: '1', price: '20 PLN' },
-          { name: 'TV/monitor', quantity: '1', price: '100 PLN' },
-          { name: 'Furniture', quantity: '1', price: '120 PLN' },
-          { name: 'Printer', quantity: '1', price: '50 PLN' },
-          { name: 'Computer mouse', quantity: '1', price: '10 PLN' },
-          { name: 'Phone', quantity: '1', price: '30 PLN' },
-          { name: 'GoPro recording', quantity: '1', price: '50 PLN' }
-        ]
       }
     },
     lounge: {
       title: 'RELAXATION ZONE',
       subtitle: 'After intense smashing',
-      description: 'Relax in our lounge area after an exciting smashing session. We\'ve prepared a comfortable space where you can cool down and share your impressions.',
+      description: 'Relax in our lounge area after an exciting smashing session. We have prepared a comfortable space where you can cool down and share your impressions.',
     },
     voucher: {
       title: 'GIFT VOUCHER',
       subtitle: 'Give a unique experience',
-      description: 'Looking for an original gift? Give your loved ones an unforgettable experience! A smashing session voucher is the perfect gift for any occasion.',
+      description: 'Looking for an original gift? Give your loved one an unforgettable experience! A smashing voucher is the perfect gift for any occasion.',
       cta: 'BUY VOUCHER',
     },
     reviews: {
@@ -115,4 +110,4 @@ export const en = {
       subtitle: 'They trust us',
     }
   }
-} as const;
+};
