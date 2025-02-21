@@ -138,8 +138,9 @@ export default function ContactPage() {
 
     // Clear validation error immediately when user starts typing
     setValidationErrors(prev => {
-      const { phone, ...rest } = prev;
-      return rest;
+      const newErrors = { ...prev };
+      delete newErrors.phone;
+      return newErrors;
     });
 
     // Set new validation timer
@@ -170,8 +171,9 @@ export default function ContactPage() {
         }));
       } else {
         setValidationErrors(prev => {
-          const { email, ...rest } = prev;
-          return rest;
+          const newErrors = { ...prev };
+          delete newErrors.email;
+          return newErrors;
         });
       }
       return;

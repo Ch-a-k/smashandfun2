@@ -6,7 +6,7 @@ export const pl = {
     learnMore: 'Dowiedz się więcej',
   },
   nav: {
-    home: 'STRONA GŁÓWNA',
+    home: '',
     organizeParty: 'ZORGANIZUJ IMPREZĘ',
     blog: 'BLOG',
     faq: 'FAQ',

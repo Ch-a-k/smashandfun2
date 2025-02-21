@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const features = [
   {
-    title: "Bezpieczeństwo",
+    title: "BEZPIECZENSTWO",
     description: "Ubrania ochronne, kaski i rękawice w cenie",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -14,7 +14,7 @@ const features = [
     )
   },
   {
-    title: "Konsola PlayStation",
+    title: "KONSOLA PLAYSTATION",
     description: "Strefa relaksu z konsolą do gier",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@ const features = [
     )
   },
   {
-    title: "Środki higieniczne",
+    title: "ŚRODKI HIGIENICZNE",
     description: "Wszystkie niezbędne środki higieniczne",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
@@ -32,7 +32,7 @@ const features = [
     )
   },
   {
-    title: "Nagrywanie",
+    title: "NAGRYWANIE",
     description: "Nagrywanie i zdjęcia Twoich osiągnięć",
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">

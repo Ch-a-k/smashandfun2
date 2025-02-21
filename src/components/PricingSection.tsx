@@ -21,7 +21,7 @@ type Package = {
 const packages: Package[] = [
   {
     name: 'BUŁKA Z MASŁEM',
-    items: ['25 szklanych przedmiotów'],
+    items: ['25 szklanych przedmiotów', '♥', '♥'],
     tools: ['ubranie', 'kask', 'rękawice'],
     people: '1-2 osoby',
     duration: 'do 30 min',
@@ -109,22 +109,31 @@ const additionalItems = [
   )},
   { quantity: '1', name: 'Nagranie z pomocą GoPro', price: '50 PLN', icon: (
     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m0 2v12h16V6H4m7 2h2v8h-2v-1c-2.5 0-2.5-6 0-6v-1m3 1.5h1.5v1h-1v3h1v1H14V9.5m-4.5 1c-.5 0-.5 3 0 3v-3Z"/>
-    </svg>
+        <path fill="currentColor" d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4Z"/>
+      </svg>
   )}
 ]
 
 const toolIcons = {
   'ubranie': (
-    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 72 72"><circle cx="36.344" cy="10.432" r="2.969" fill="#F36E21"/><path fill="#F36E21" d="M43.54 22.541a4.3 4.3 0 0 0-4.209-4.131h-6a4.3 4.3 0 0 0-4.209 4.131l-.792 19.44a1 1 0 0 1-.12.437l1.395-.997l.824 21.035a1.23 1.23 0 0 0 .25.88a.24.24 0 0 0 .152.09c.214 0 .656-.427.735-1.126l2.899-22.503a5 5 0 0 1 .402-1.193l.725-.805h1.625l.984.623a5 5 0 0 1 .352 1.342l2.542 22.534c.079.698.522 1.125.736 1.125a.24.24 0 0 0 .152-.09c.192-.248.49-.585.457-.9l-.076-21.515l2.643 1.835"/><circle cx="36.344" cy="10.432" r="2.969" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1"/><path fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M31.477 24.252c2.352 3.533.677 6.107.032 8a33.4 33.4 0 0 0-.898 5.613c-.6 5.977-1.002 24.005-1.002 24.005c-.055 1.1.575 2 1.4 2a2.076 2.076 0 0 0 1.729-1.987l2.539-22.031c.126-1.093.679-1.987 1.229-1.987s1.1.894 1.229 1.987l2.542 22.031a2.076 2.076 0 0 0 1.73 1.987c.824 0 1.454-.9 1.4-2c0 0-.524-17.841-1.074-23.762a36 36 0 0 0-.827-5.856c-.617-1.902-2.416-4.739-.029-8"/><path fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="m27.38 41.842l.792-19a5.274 5.274 0 0 1 5.208-5h5.927a5.274 5.274 0 0 1 5.208 5l.792 19"/><ellipse cx="38.844" cy="13.521" stroke="#000" strokeLinecap="round" strokeLinejoin="round" rx="1.134" ry=".757" transform="rotate(-50 38.844 13.521)" strokeWidth="0"/><ellipse cx="33.844" cy="13.521" stroke="#000" strokeLinecap="round" strokeLinejoin="round" rx=".757" ry="1.134" transform="rotate(-40 33.843 13.521)" strokeWidth="0"/><circle cx="36.344" cy="13.401" r="1.5" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0"/><circle cx="39.63" cy="20.875" r="1"/></svg>
+    <div className="flex flex-col items-center justify-center gap-2 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 72 72"><circle cx="36.344" cy="10.432" r="2.969" fill="#F36E21"/><path fill="#F36E21" d="M43.54 22.541a4.3 4.3 0 0 0-4.209-4.131h-6a4.3 4.3 0 0 0-4.209 4.131l-.792 19.44a1 1 0 0 1-.12.437l1.395-.997l.824 21.035a1.23 1.23 0 0 0 .25.88a.24.24 0 0 0 .152.09c.214 0 .656-.427.735-1.126l2.899-22.503a5 5 0 0 1 .402-1.193l.725-.805h1.625l.984.623a5 5 0 0 1 .352 1.342l2.542 22.534c.079.698.522 1.125.736 1.125a.24.24 0 0 0 .152-.09c.192-.248.49-.585.457-.9l-.076-21.515l2.643 1.835"/><circle cx="36.344" cy="10.432" r="2.969" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1"/><path fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M31.477 24.252c2.352 3.533.677 6.107.032 8a33.4 33.4 0 0 0-.898 5.613c-.6 5.977-1.002 24.005-1.002 24.005c-.055 1.1.575 2 1.4 2a2.076 2.076 0 0 0 1.729-1.987l2.539-22.031c.126-1.093.679-1.987 1.229-1.987s1.1.894 1.229 1.987l2.542 22.031a2.076 2.076 0 0 0 1.73 1.987c.824 0 1.454-.9 1.4-2c0 0-.524-17.841-1.074-23.762a36 36 0 0 0-.827-5.856c-.617-1.902-2.416-4.739-.029-8"/><path fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M27.38 41.842l.792-19a5.274 5.274 0 0 1 5.208-5h5.927a5.274 5.274 0 0 1 5.208 5l.792 19"/><ellipse cx="38.844" cy="13.521" stroke="#000" strokeLinecap="round" strokeLinejoin="round" rx="1.134" ry=".757" transform="rotate(-50 38.844 13.521)" strokeWidth="0"/><ellipse cx="33.844" cy="13.521" stroke="#000" strokeLinecap="round" strokeLinejoin="round" rx=".757" ry="1.134" transform="rotate(-40 33.843 13.521)" strokeWidth="0"/><circle cx="36.344" cy="13.401" r="1.5" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0"/><circle cx="39.63" cy="20.875" r="1"/></svg>
+      <span className="text-sm font-medium">Ubranie</span>
+    </div>
   ),
   'kask': (
-    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 64 64"><path fill="#000" d="M6 28h52v12H6z"/><path fill="#ffba57" d="M8 37v-9h48v9s4 0 4 5s-4 5-4 5c0 8-18 15-24 15S8 55 8 47c0 0-4 0-4-5s4-5 4-5"/><path fill="#f0eaea" d="M20 35.8c-5 0-7 1.8-7 3.6s0 4.4 6.6 4.4c6.4 0 7.4-.8 7.4-3.5c0-1.8-2-4.5-7-4.5"/><circle cx="20.5" cy="38.8" r="4.5" fill="#000"/><path fill="#000" d="M22 38.8c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5s1.5.7 1.5 1.5"/><path fill="#000" d="M13 39.3c0-7 14-7 14 1c-2-6-12-6-14-1"/><path fill="#f0eaea" d="M44 35.8c5 0 7 1.8 7 3.6s0 4.4-6.6 4.4c-6.4 0-7.4-.8-7.4-3.5c0-1.8 2-4.5 7-4.5"/><circle cx="43.5" cy="38.8" r="4.5" fill="#000"/><path fill="#000" d="M42 38.8c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5s-1.5.7-1.5 1.5"/><path fill="#000" d="M51 39.3c0-7-14-7-14 1c2-6-12-6-14-1"/><path fill="#9b4615" d="M41 50.9c0 3.4-4.5 5.1-9 5.1s-9-1.7-9-5.1c0 0 0-.9.9-.9h16.2c.9 0 .9.9.9.9"/><path fill="#F36E21" d="M59 31H5C5 16.6 11.8 5.5 32 5.5S59 16.6 59 31"/><g fill="#a44a17"><path d="M24.5 31h-4V7.1l4-1.2zm19 0h-4V5.9l4 1.2z"/><path d="M62 33.2H2c0-5.1 13.4-9.3 30-9.3s30 4.2 30 9.3"/></g><path fill="#F36E21" d="M41.5 27.7h-19V6.6c0-6.1 19.1-6.1 19.1 0v21.1z"/></svg>
+    <div className="flex flex-col items-center justify-center gap-2 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 64 64"><path fill="#000" d="M6 28h52v12H6z"/><path fill="#ffba57" d="M8 37v-9h48v9s4 0 4 5s-4 5-4 5c0 8-18 15-24 15S8 55 8 47c0 0-4 0-4-5s4-5 4-5"/><path fill="#f0eaea" d="M20 35.8c-5 0-7 1.8-7 3.6s0 4.4 6.6 4.4c6.4 0 7.4-.8 7.4-3.5c0-1.8-2-4.5-7-4.5"/><circle cx="20.5" cy="38.8" r="4.5" fill="#000"/><path fill="#000" d="M22 38.8c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5s1.5.7 1.5 1.5"/><path fill="#000" d="M13 39.3c0-7 14-7 14 1c-2-6-12-6-14-1"/><path fill="#f0eaea" d="M44 35.8c5 0 7 1.8 7 3.6s0 4.4-6.6 4.4c-6.4 0-7.4-.8-7.4-3.5c0-1.8 2-4.5 7-4.5"/><circle cx="43.5" cy="38.8" r="4.5" fill="#000"/><path fill="#000" d="M42 38.8c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5s-.7-1.5-1.5-1.5s-1.5.7-1.5 1.5"/><path fill="#000" d="M51 39.3c0-7-14-7-14 1c2-6-12-6-14-1"/><path fill="#9b4615" d="M41 50.9c0 3.4-4.5 5.1-9 5.1s-9-1.7-9-5.1c0 0 0-.9.9-.9h16.2c.9 0 .9.9.9.9"/><path fill="#F36E21" d="M59 31H5C5 16.6 11.8 5.5 32 5.5S59 16.6 59 31"/><g fill="#a44a17"><path d="M24.5 31h-4V7.1l4-1.2zm19 0h-4V5.9l4 1.2z"/><path d="M62 33.2H2c0-5.1 13.4-9.3 30-9.3s30 4.2 30 9.3"/></g><path fill="#F36E21" d="M41.5 27.7h-19V6.6c0-6.1 19.1-6.1 19.1 0v21.1z"/></svg>
+      <span className="text-sm font-medium">Kask</span>
+    </div>
   ),
   'rękawice': (
-    <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 36 36"><path fill="#5e2707" d="M33.334 27.096c-.588-1.143-1.532-4.627-1.246-5.976s1.015-3.975.402-6.053L30.216 7.36s-.108-1.503-1.519-1.122c-1.949.526-1.501 2.043-1.501 2.043l.715 3.092l1.157 2.42s-.701.206-1.551-2.674l-2.872-9.731S24.578-.1 23.16.255c-1.85.463-1.521 2.102-1.521 2.102l2.662 9.02c-.402.05-.456.203-.46.191l-2.905-9.846S21.015.261 19.582.543c-1.92.377-1.695 2.08-1.695 2.08l2.939 9.851c.003.012-.479.156-.473.176l-2.506-8.494s.059-1.547-1.355-1.179c-2.018.525-1.659 2.142-1.659 2.142l3.101 10.51l.037-.011c-.02.005.074.474.17.711c.604 1.49 1.395 2.726 2.324 3.706a.7.7 0 0 0 .163.277c.969 1.036 3.396 4.267 4.325 7.59c.581 2.078 4.215.914 5.026.556c1.078-.477-.641-3.61-.753-4.311s.618-1.482 1.096-.51s.646 4.026 1.657 3.835s2.888-1.17 3.558-1.855c.44-.452.851-1.079.263-2.222"/><path fill="#a63d00" d="M33.794 26.905c-.588-1.143-1.532-4.627-1.246-5.976s1.015-3.975.402-6.053L30.676 7.17s-.413-1.401-1.816-.988c-1.4.414-.987 1.815-.987 1.815L28.759 11l.768 2.602s-.701.206-1.551-2.675l-2.872-9.731S24.69-.205 23.289.208s-.988 1.815-.988 1.815l2.715 9.203c-.006-.02-.713.162-.717.15L21.394 1.53S20.981.128 19.579.542s-.988 1.815-.988 1.815l2.905 9.847c.003.012-.692.235-.686.255l-2.506-8.494s-.414-1.401-1.815-.988s-.988 1.815-.988 1.815l2.665 9.03c.024.083-.649.383-.618.486l-1.92-6.507s-.414-1.401-1.815-.987s-.988 1.815-.988 1.815l3.102 10.51l.037-.011c-.02.005.074.474.17.711c.604 1.49 1.395 2.726 2.324 3.705a.7.7 0 0 0 .163.277c.969 1.036 3.396 4.267 4.325 7.59c.581 2.078 4.215.914 5.026.556c1.078-.477-.641-3.61-.753-4.311c-.112-.7.618-1.482 1.096-.51s.646 4.026 1.657 3.835s2.888-1.17 3.558-1.855c.441-.451.853-1.078.264-2.221"/><path fill="#a63d00" d="M29.743 26.025c-1.09-.681-3.683-3.193-4.127-4.498s-1.16-3.935-2.75-5.407l-5.895-5.461s-1.072-.993-2.065.079s.079 2.065.079 2.065l2.297 2.128l1.991 1.844s-.497.536-2.701-1.505L9.427 7.974s-1.072-.993-2.065.079s.079 2.065.079 2.065l7.039 6.52c-.015-.014-.53.504-.54.495l-7.531-6.976s-1.072-.993-2.065.079s.079 2.065.079 2.065l7.532 6.977c.009.008-.475.556-.46.57L4.999 13.83s-1.072-.993-2.065.079s.079 2.065.079 2.065l6.907 6.398c.063.059-.362.661-.283.734l-4.977-4.61s-1.072-.993-2.065.08s.079 2.065.079 2.065l8.039 7.447s.332.341.536.496c1.28.972 2.444 1.603 3.741 2.01c.127.042.314.107.433.141c1.363.395 5.1 1.931 7.597 4.311c1.562 1.489 4.09-1.37 4.603-2.092c.683-.961-2.397-2.775-2.851-3.32s-.227-1.589.681-.999s2.613 3.13 3.385 2.448s1.884-2.482 2.11-3.413c.149-.614.182-1.364-.907-2.045"/><path fill="#a63d00" d="M19.097 27.624a.5.5 0 0 1-.202-.043l-6.529-2.883a.5.5 0 1 1 .405-.914l6.529 2.883a.5.5 0 0 1-.203.957m2.497-2.997a.5.5 0 0 1-.351-.144l-5.253-5.167a.5.5 0 1 1 .701-.713l5.252 5.167a.5.5 0 0 1-.349.857m-1.226 1.453a.5.5 0 0 1-.281-.087l-6.235-4.241a.501.501 0 0 1 .563-.826l6.235 4.241a.5.5 0 0 1-.282.913"/></svg>
+    <div className="flex flex-col items-center justify-center gap-2 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 36 36"><path fill="#5e2707" d="M33.334 27.096c-.588-1.143-1.532-4.627-1.246-5.976s1.015-3.975.402-6.053L30.216 7.36s-.108-1.503-1.519-1.122c-1.949.526-1.501 2.043-1.501 2.043l.715 3.092l1.157 2.42s-.701.206-1.551-2.674l-2.872-9.731S24.578-.1 23.16.255c-1.85.463-1.521 2.102-1.521 2.102l2.662 9.02c-.402.05-.456.203-.46.191l-2.905-9.846S21.015.261 19.582.543c-1.92.377-1.695 2.08-1.695 2.08l2.939 9.851c.003.012-.479.156-.473.176l-2.506-8.494s.059-1.547-1.355-1.179c-2.018.525-1.659 2.142-1.659 2.142l3.101 10.51l.037-.011c-.02.005.074.474.17.711c.604 1.49 1.395 2.726 2.324 3.706a.7.7 0 0 0 .163.277c.969 1.036 3.396 4.267 4.325 7.59c.581 2.078 4.215.914 5.026.556c1.078-.477-.641-3.61-.753-4.311s.618-1.482 1.096-.51s.646 4.026 1.657 3.835s2.888-1.17 3.558-1.855c.44-.452.851-1.079.263-2.222"/><path fill="#a63d00" d="M33.794 26.905c-.588-1.143-1.532-4.627-1.246-5.976s1.015-3.975.402-6.053L30.676 7.17s-.413-1.401-1.816-.988c-1.4.414-.987 1.815-.987 1.815L28.759 11l.768 2.602s-.701.206-1.551-2.675l-2.872-9.731S24.69-.205 23.289.208s-.988 1.815-.988 1.815l2.715 9.203c-.006-.02-.713.162-.717.15L21.394 1.53S20.981.128 19.579.542s-.988 1.815-.988 1.815l2.905 9.847c.003.012-.692.235-.686.255l-2.506-8.494s-.414-1.401-1.815-.988s-.988 1.815-.988 1.815l2.665 9.03c.024.083-.649.383-.618.486l-1.92-6.507s-.414-1.401-1.815-.987s-.988 1.815-.988 1.815l3.102 10.51l.037-.011c-.02.005.074.474.17.711c.604 1.49 1.395 2.726 2.324 3.705a.7.7 0 0 0 .163.277c.969 1.036 3.396 4.267 4.325 7.59c.581 2.078 4.215.914 5.026.556c1.078-.477-.641-3.61-.753-4.311c-.112-.7.618-1.482 1.096-.51s.646 4.026 1.657 3.835s2.888-1.17 3.558-1.855c.441-.451.853-1.078.264-2.221"/></svg>
+      <span className="text-sm font-medium">Rękawice</span>
+    </div>
   )
-}
+};
 
 interface GlassShard {
   id: number
@@ -267,23 +276,13 @@ export function PricingSection() {
                       </ul>
                     </div>
 
-                    <div className="mb-4">
-                      <h4 className="text-white font-impact text-sm mb-1.5">{translations.home.pricing.tools}</h4>
-                      <div className="flex gap-3 items-center">
-                        {pkg.tools.map((tool, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: index * 0.1 + i * 0.1 }}
-                            className="text-[#f36e21] bg-white/5 p-2 rounded-lg cursor-help relative group"
-                            title={translations.home.pricing.equipment.items[tool as keyof typeof translations.home.pricing.equipment.items]}
-                          >
+                    <div className="mt-2 space-y-4">
+                      {/* Tools */}
+                      <div className="grid grid-cols-3 gap-4">
+                        {pkg.tools.map((tool) => (
+                          <div key={tool} className="flex justify-center">
                             {toolIcons[tool]}
-                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-[#F36E21]/90 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                              {translations.home.pricing.equipment.items[tool as keyof typeof translations.home.pricing.equipment.items]}
-                            </div>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -397,7 +396,7 @@ const GlassCard = ({ children, onClick, isActive, delay = 0 }: GlassCardProps) =
     >
       <div
         onClick={onClick}
-        className={`relative overflow-hidden rounded-xl bg-gradient-to-br from-white/[0.08] to-transparent 
+        className={`relative rounded-xl bg-gradient-to-br from-white/[0.08] to-transparent 
                    backdrop-blur-sm border border-white/[0.08] h-full transition-colors
                    ${isActive ? 'border-[#f36e21]/30' : 'hover:border-white/[0.12]'}`}
       >
