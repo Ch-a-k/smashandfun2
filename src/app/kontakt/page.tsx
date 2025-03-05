@@ -357,7 +357,7 @@ const ContactPage = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="bg-[#171717]/40 backdrop-blur-sm rounded-2xl p-1 border border-white/5 relative overflow-hidden"
             >
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2446.3718927069317!2d20.996727099999998!3d52.1821125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471933267d0087ff%3A0x93741029e0bcf2d2!2sPost%C4%99pu%2019%2F4%2C%2003-676%20Warszawa!5e0!3m2!1sru!2spl!4v1741217851679!5m2!1sru!2spl" width="100%" height="450" style={{border:0}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2446.3718927069317!2d20.996727099999998!3d52.1821125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471933267d0087ff%3A0x93741029e0bcf2d2!2sPost%C4%99pu%2019%2F4%2C%2003-676%20Warszawa!5e0!3m2!1sru!2spl!4v1741217851679!5m2!1sru!2spl" width="100%" height="450" style={{border:0}} allowFullScreen={true} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </motion.div>
           </div>
         </section>
