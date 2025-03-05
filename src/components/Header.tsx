@@ -102,6 +102,7 @@ export default function Header() {
             </nav>
 
             <div className="flex items-center space-x-4">
+              <LanguageSwitcher />
               <button
                 onClick={scrollToServices}
                 className="hidden md:block bg-[#f36e21] text-white px-4 py-2 rounded-lg font-impact uppercase tracking-wide hover:bg-[#f36e21]/90 transition-colors"

@@ -16,7 +16,7 @@ const partners = [
 
 export function PartnersSection() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#1a1718] to-[#231f20] overflow-hidden">
+    <section className="relative py-16 bg-gradient-to-b from-[#1a1718] to-[#231f20] overflow-hidden">
       {/* Top gradient line */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f36e21] to-transparent opacity-30" />
 
@@ -29,7 +29,7 @@ export function PartnersSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section title */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

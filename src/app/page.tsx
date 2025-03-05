@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <section id="services" className="relative w-full bg-gradient-to-b from-[#1a1718] to-[#231f20] py-32">
+        <section id="services" className="relative w-full bg-gradient-to-b from-[#1a1718] to-[#231f20] py-0">
           {/* Decorative line */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f36e21] to-transparent opacity-30"></div>
           <PricingSection />

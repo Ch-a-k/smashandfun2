@@ -57,7 +57,7 @@ export default function OrganizacjaImprez() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative w-full bg-gradient-to-b from-[#1a1718] to-[#231f20] py-32">
+        <section className="relative w-full bg-[#231f20] py-32">
           {/* Decorative line */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f36e21] to-transparent opacity-30"></div>
           
@@ -141,7 +141,7 @@ export default function OrganizacjaImprez() {
         </section>
 
         {/* Services Section */}
-        <section className="relative w-full bg-[#1a1718] py-24">
+        <section className="w-full bg-[#231f20]">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {services.map((service, index) => (
@@ -221,13 +221,13 @@ export default function OrganizacjaImprez() {
         </section>
 
         {/* CTA Section */}
-        <section className="relative w-full bg-[#1a1718] py-24">
+        <section className="relative w-full bg-[#f36e21] py-24">
           <div className="max-w-3xl mx-auto px-4 text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-12 relative"
+              className="bg-[#231f20] backdrop-blur-sm rounded-2xl p-12 relative"
             >
               {/* Glass effect overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-10 rounded-2xl pointer-events-none" />

@@ -16,7 +16,7 @@ export const pl = {
     hero: {
       title: 'DEMOLKA #1 W WARSZAWIE',
       subtitle: 'Uwolnij stres i emocje w najbardziej ekscytujący sposób!',
-      description: 'Rozbij wszystko młotkami, bitami i kuvaldami.',
+      description: ' ',
       cta: 'CHCĘ SPRÓBOWAĆ!',
     },
     pricing: {

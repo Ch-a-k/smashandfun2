@@ -16,7 +16,7 @@ export const en = {
     hero: {
       title: 'RAGE ROOM #1 IN WARSAW',
       subtitle: 'Release stress and emotions in the most exciting way!',
-      description: 'Smash everything with hammers, bats, and sledgehammers.',
+      description: ' ',
       cta: 'I WANT TO TRY!',
     },
     pricing: {

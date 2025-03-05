@@ -49,23 +49,7 @@ export function LoungeSection() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#f36e21] to-transparent opacity-30"></div>
       
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block"
-          >
-            <h2 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80 mb-6">
-              Strefa Komfortu
-            </h2>
-            <div className="flex items-center justify-center gap-2">
-              <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#f36e21]"></div>
-              <div className="h-[2px] w-12 bg-[#f36e21]"></div>
-              <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#f36e21]"></div>
-            </div>
-          </motion.div>
-        </div>
+        
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
           {features.map((feature, index) => (
