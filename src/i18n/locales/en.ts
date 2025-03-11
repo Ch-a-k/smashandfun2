@@ -46,36 +46,36 @@ export const en = {
         easy: {
           name: 'PIECE OF CAKE',
           items: [
-            '25 glass items',
-            '1 piece of furniture',
-            '2 electronic devices'
+            '75 glass items',
+            '0 piece of furniture',
+            '0 electronic devices'
           ],
           difficulty: 'EASY'
         },
         medium: {
           name: 'EASY',
           items: [
-            '25 glass items',
-            '2 pieces of furniture',
-            '3 electronic devices'
+            '75 glass items',
+            '6 pieces of furniture',
+            '9 electronic devices'
           ],
           difficulty: 'MEDIUM'
         },
         hard: {
           name: 'MEDIUM',
           items: [
-            '30 glass items',
-            '3 pieces of furniture',
-            '5 electronic devices'
+            '90 glass items',
+            '9 pieces of furniture',
+            '15 electronic devices'
           ],
           difficulty: 'HARD'
         },
         extreme: {
           name: 'HARD',
           items: [
-            '35 glass items',
-            '4 pieces of furniture',
-            '7 electronic devices'
+            '105 glass items',
+            '12 pieces of furniture',
+            '21 electronic devices'
           ],
           difficulty: 'EXTREME'
         }

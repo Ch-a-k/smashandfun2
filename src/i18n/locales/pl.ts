@@ -47,8 +47,8 @@ export const pl = {
           name: 'BUŁKA Z MASŁEM',
           items: [
             '25 szklanych przedmiotów',
-            '1 mebel',
-            '2 urządzenia elektroniczne'
+            '0 mebel',
+            '0 urządzenia elektroniczne'
           ],
           difficulty: 'ŁATWY'
         },

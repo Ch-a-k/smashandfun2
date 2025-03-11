@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import { ReactElement } from 'react'
 import Link from 'next/link'
+import { FloatingImages } from '@/components/FloatingImages'
 
 // Types
 type Tool = 'ubranie' | 'kask' | 'rękawice'
@@ -273,15 +274,22 @@ export function PricingSection() {
   ]
 
   return (
-    <section id="pricing" className="relative w-full bg-[#231f20] py-24">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="relative w-full bg-[#231f20] py-24 overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02] mix-blend-overlay" />
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-[#f36e21]/5 rounded-full blur-[150px]" />
+      <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] bg-[#231f20]/90 rounded-full blur-[150px]" />
+      
+      {/* Floating images */}
+      <FloatingImages />
+      
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
         <SectionTitle title={t('home.pricing.title')} />
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {packages.map((pkg, index) => (
-            <div key={pkg.name} className="h-full flex">
-              <PricingCard pkg={pkg} index={index} />
-            </div>
+            <PricingCard key={pkg.name} pkg={pkg} index={index} />
           ))}
         </div>
       </div>
