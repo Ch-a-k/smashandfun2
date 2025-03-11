@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { BlogPost } from '@/types/blog';
+import { useI18n } from '@/i18n/I18nContext';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -15,6 +16,8 @@ const item = {
 };
 
 function BlogCard({ post, onClick }: BlogCardProps) {
+  const { t } = useI18n();
+
   return (
     <motion.article 
       variants={item}
@@ -50,7 +53,7 @@ function BlogCard({ post, onClick }: BlogCardProps) {
             })}
           </time>
           <span>•</span>
-          <span>{post.readTime} min czytania</span>
+          <span>{post.readTime} {t('blog.readTime')}</span>
         </div>
         
         <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-[#f36e21] transition-colors">
@@ -62,7 +65,7 @@ function BlogCard({ post, onClick }: BlogCardProps) {
         </p>
         
         <div className="mt-4 inline-flex items-center text-[#f36e21] font-medium">
-          Czytaj więcej
+          {t('common.readMore')}
           <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

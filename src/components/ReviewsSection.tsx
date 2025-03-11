@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useI18n } from '@/i18n/I18nContext';
 
 const reviews = [
   {
@@ -39,7 +40,7 @@ const reviews = [
 
 function ReviewsSlider() {
   return (
-    <div className="relative w-screen overflow-hidden py-12">
+    <div className="relative py-12">
       <style jsx>{`
         @keyframes scroll {
           0% {
@@ -62,14 +63,14 @@ function ReviewsSlider() {
       `}</style>
 
       <div className="w-full">
-        <div className="relative overflow-hidden">
+        <div className="relative">
           <div className="scroll-container">
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 group cursor-pointer"
               >
-                <div className="relative rounded-xl backdrop-blur-sm px-8 py-6 border border-white/[0.08] w-screen max-w-[600px] h-[280px] flex flex-col justify-between group-hover:bg-white/[0.02] group-hover:scale-[1.02] transition-all duration-300">
+                <div className="relative rounded-xl backdrop-blur-sm px-8 py-6 border border-white/[0.08] w-[600px] h-[280px] flex flex-col justify-between group-hover:bg-white/[0.02] group-hover:scale-[1.02] transition-all duration-300">
                   <div className="flex flex-col h-full">
                     <p className="text-white/80 text-lg leading-relaxed mb-4 flex-grow overflow-y-auto">
                       {review.text}
@@ -84,8 +85,8 @@ function ReviewsSlider() {
           </div>
 
           {/* Градиентные края для плавного перехода */}
-          <div className="absolute left-0 top-0 w-96 h-full bg-gradient-to-r from-[#914213]/50 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 w-96 h-full bg-gradient-to-l from-black/50 to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 w-96 h-full bg-gradient-to-r from-[#231f20] to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 w-96 h-full bg-gradient-to-l from-[#231f20] to-transparent z-10"></div>
         </div>
       </div>
     </div>
@@ -93,15 +94,20 @@ function ReviewsSlider() {
 }
 
 export function ReviewsSection() {
+  const { t } = useI18n();
+  
   return (
-    <section className="w-screen bg-black/20 py-24 relative -left-[50vw] ml-[50%]">
-      <div className="container">
-        <h2 className="text-4xl font-bold text-center text-white mb-12">
-          Co mówią o nas nasi goście
+    <section className="w-full bg-black/20 py-24 relative">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-6">
+          {t('home.reviews.title')}
         </h2>
-        <div className="w-full">
-          <ReviewsSlider />
-        </div>
+        <p className="text-lg text-white/70 text-center mb-12">
+          {t('home.reviews.description')}
+        </p>
+      </div>
+      <div className="w-full">
+        <ReviewsSlider />
       </div>
     </section>
   );

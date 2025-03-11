@@ -1,69 +1,113 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, ReactNode, useEffect } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { pl } from './locales/pl';
 import { en } from './locales/en';
-import { Translations } from './types';
 
-type Locale = 'pl' | 'en';
+export type Locale = 'pl' | 'en';
 
-interface I18nContextType {
+export type I18nContextType = {
   locale: Locale;
-  translations: Translations;
   setLocale: (locale: Locale) => void;
-}
+  t: (key: string, options?: { returnObjects?: boolean }) => string | string[] | any;
+};
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
-const translations: Record<Locale, Translations> = {
-  pl,
-  en,
+// Приводим типы к any для обхода проблем с типизацией переводов
+const translations: Record<Locale, any> = {
+  pl: pl as any,
+  en: en as any,
 };
+
+function validateTranslations() {
+  const locales: Locale[] = ['pl', 'en'];
+  locales.forEach(locale => {
+    if (!translations[locale]) {
+      console.error(`Missing translations for locale: ${locale}`);
+    }
+  });
+}
 
 function getInitialLocale(): Locale {
   if (typeof window === 'undefined') return 'pl';
 
-  // Check localStorage
-  const savedLocale = localStorage.getItem('locale') as Locale;
+  const savedLocale = localStorage.getItem('locale') as Locale | null;
   if (savedLocale && ['pl', 'en'].includes(savedLocale)) {
     return savedLocale;
   }
 
-  // Check browser language
-  const browserLang = navigator.language.toLowerCase();
-  if (browserLang.startsWith('pl')) {
-    return 'pl';
-  }
-  if (browserLang.startsWith('en')) {
-    return 'en';
+  const browserLocale = navigator.language.split('-')[0];
+  if (browserLocale === 'pl' || browserLocale === 'en') {
+    return browserLocale as Locale;
   }
 
-  // Default to Polish
   return 'pl';
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('pl'); // Default to pl initially
+type I18nProviderProps = {
+  children: ReactNode;
+};
+
+export function I18nProvider({ children }: I18nProviderProps) {
+  const [locale, setLocaleState] = useState<Locale>('pl');
 
   useEffect(() => {
-    // Set the initial locale after mounting
-    setLocaleState(getInitialLocale());
+    // Проверяем переводы при инициализации
+    validateTranslations();
+    
+    // Устанавливаем начальную локаль
+    const initialLocale = getInitialLocale();
+    setLocaleState(initialLocale);
+    
+    // Устанавливаем атрибут lang для HTML
+    document.documentElement.lang = initialLocale;
   }, []);
 
-  const setLocale = useCallback((newLocale: Locale) => {
+  const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
     localStorage.setItem('locale', newLocale);
-    document.documentElement.lang = newLocale; // Update HTML lang attribute
-  }, []);
+    document.documentElement.lang = newLocale;
+  };
+
+  const t = (key: string, options?: { returnObjects?: boolean }): string | string[] | any => {
+    try {
+      const keys = key.split('.');
+      let value: any = translations[locale];
+
+      if (!value) {
+        console.error(`No translations found for locale: ${locale}`);
+        return key;
+      }
+
+      for (const k of keys) {
+        if (value[k] === undefined) {
+          console.warn(`Translation key not found: ${key}`);
+          return key;
+        }
+        value = value[k];
+      }
+
+      if (options?.returnObjects) {
+        return value;
+      }
+
+      if (typeof value === 'string') {
+        return value;
+      }
+
+      console.warn(`Translation value is not a string: ${key}`);
+      return key;
+    } catch (error) {
+      console.error(`Error getting translation for key: ${key}`, error);
+      return key;
+    }
+  };
 
   return (
-    <I18nContext.Provider
-      value={{
-        locale,
-        translations: translations[locale],
-        setLocale,
-      }}
-    >
+    <I18nContext.Provider value={{ locale, setLocale, t }}>
       {children}
     </I18nContext.Provider>
   );

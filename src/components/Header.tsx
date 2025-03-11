@@ -13,7 +13,7 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const { translations } = useI18n();
+  const { t } = useI18n();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,19 +49,16 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: '/', label: translations.nav.home },
-    { href: '/organizacja-imprez', label: translations.nav.organizeParty },
-    { href: '/blog', label: translations.nav.blog },
-    { href: '/faq', label: translations.nav.faq },
-    { href: '/kontakt', label: translations.nav.contact },
+    { href: '/', label: t('nav.home') },
+    { href: '/organizacja-imprez', label: t('nav.organizeParty') },
+    { href: '/blog', label: t('nav.blog') },
+    { href: '/faq', label: t('nav.faq') },
+    { href: '/kontakt', label: t('nav.contact') },
   ];
 
   const scrollToServices = () => {
-    const servicesSection = document.getElementById('services');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
+    window.open('https://smashandfun.simplybook.it/v2/#book/count/1/', '_blank');
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -107,7 +104,7 @@ export default function Header() {
                 onClick={scrollToServices}
                 className="hidden md:block bg-[#f36e21] text-white px-4 py-2 rounded-lg font-impact uppercase tracking-wide hover:bg-[#f36e21]/90 transition-colors"
               >
-                REZERWACJA
+                {t('common.bookNow')}
               </button>
               {/* Mobile Menu Button */}
               <button
@@ -189,7 +186,7 @@ export default function Header() {
                       onClick={scrollToServices}
                       className="bg-[#f36e21] text-white px-6 py-2.5 rounded-lg font-impact uppercase tracking-wide hover:bg-[#f36e21]/90 transition-colors text-lg"
                     >
-                      REZERWACJA
+                      {t('common.bookNow')}
                     </button>
                   </motion.div>
 

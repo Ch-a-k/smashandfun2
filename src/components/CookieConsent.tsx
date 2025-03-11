@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { useI18n } from '@/i18n/I18nContext';
 
 type CookieSettings = {
   necessary: boolean;
@@ -17,17 +18,39 @@ const defaultSettings: CookieSettings = {
 };
 
 export default function CookieConsent() {
+  const { t } = useI18n();
   const [showBanner, setShowBanner] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [settings, setSettings] = useState<CookieSettings>(defaultSettings);
 
   useEffect(() => {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
+    try {
+      // Check if user has already made a choice
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        setShowBanner(true);
+        return;
+      }
+
+      // Проверяем, что значение является валидным JSON
+      const parsedConsent = JSON.parse(consent);
+      
+      // Проверяем, что все необходимые поля присутствуют
+      if (typeof parsedConsent === 'object' && 
+          'necessary' in parsedConsent && 
+          'analytics' in parsedConsent && 
+          'marketing' in parsedConsent) {
+        setSettings(parsedConsent);
+      } else {
+        // Если структура неверная, сбрасываем к настройкам по умолчанию
+        localStorage.removeItem('cookieConsent');
+        setShowBanner(true);
+      }
+    } catch (error) {
+      // Если возникла ошибка при парсинге JSON, сбрасываем к настройкам по умолчанию
+      console.error('Error parsing cookie consent:', error);
+      localStorage.removeItem('cookieConsent');
       setShowBanner(true);
-    } else {
-      setSettings(JSON.parse(consent));
     }
   }, []);
 
@@ -37,21 +60,33 @@ export default function CookieConsent() {
       analytics: true,
       marketing: true,
     };
-    localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
-    setSettings(allAccepted);
-    setShowBanner(false);
+    try {
+      localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
+      setSettings(allAccepted);
+      setShowBanner(false);
+    } catch (error) {
+      console.error('Error saving cookie consent:', error);
+    }
   };
 
   const handleSaveSettings = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(settings));
-    setShowBanner(false);
-    setShowSettings(false);
+    try {
+      localStorage.setItem('cookieConsent', JSON.stringify(settings));
+      setShowBanner(false);
+      setShowSettings(false);
+    } catch (error) {
+      console.error('Error saving cookie settings:', error);
+    }
   };
 
   const handleRejectAll = () => {
-    localStorage.setItem('cookieConsent', JSON.stringify(defaultSettings));
-    setSettings(defaultSettings);
-    setShowBanner(false);
+    try {
+      localStorage.setItem('cookieConsent', JSON.stringify(defaultSettings));
+      setSettings(defaultSettings);
+      setShowBanner(false);
+    } catch (error) {
+      console.error('Error rejecting cookies:', error);
+    }
   };
 
   return (
@@ -69,11 +104,9 @@ export default function CookieConsent() {
               <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                 <div className="text-white/70 text-sm flex-1">
                   <p>
-                    Używamy plików cookie, aby zapewnić najlepszą jakość korzystania z naszej strony. 
-                    Możesz zaakceptować wszystkie pliki cookie lub dostosować swoje preferencje w ustawieniach.
-                    Więcej informacji znajdziesz w naszej{' '}
+                    {t('cookies.banner.text')}{' '}
                     <Link href="/polityka-prywatnosci" className="text-[#f36e21] hover:underline">
-                      Polityce Prywatności
+                      {t('privacyPolicy.title')}
                     </Link>.
                   </p>
                 </div>
@@ -82,19 +115,19 @@ export default function CookieConsent() {
                     onClick={() => setShowSettings(true)}
                     className="px-4 py-2 text-white border border-white/20 rounded hover:bg-white/5 transition-colors"
                   >
-                    Ustawienia
+                    {t('cookies.banner.settings')}
                   </button>
                   <button
                     onClick={handleRejectAll}
                     className="px-4 py-2 text-white border border-white/20 rounded hover:bg-white/5 transition-colors"
                   >
-                    Odrzuć wszystkie
+                    {t('cookies.banner.rejectAll')}
                   </button>
                   <button
                     onClick={handleAcceptAll}
                     className="px-4 py-2 bg-[#f36e21] text-white rounded hover:bg-[#ff7b2e] transition-colors"
                   >
-                    Akceptuj wszystkie
+                    {t('cookies.banner.acceptAll')}
                   </button>
                 </div>
               </div>
@@ -113,15 +146,15 @@ export default function CookieConsent() {
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-[#1a1718] rounded-2xl p-6 max-w-2xl w-full relative"
             >
-              <h2 className="text-2xl font-bold text-white mb-6">Ustawienia plików cookie</h2>
+              <h2 className="text-2xl font-bold text-white mb-6">{t('cookies.modal.title')}</h2>
               
               <div className="space-y-6">
                 {/* Necessary Cookies */}
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                   <div>
-                    <h3 className="text-white font-medium">Niezbędne</h3>
+                    <h3 className="text-white font-medium">{t('cookies.modal.necessary.title')}</h3>
                     <p className="text-white/70 text-sm mt-1">
-                      Te pliki cookie są wymagane do działania strony i nie mogą być wyłączone.
+                      {t('cookies.modal.necessary.description')}
                     </p>
                   </div>
                   <div className="relative">
@@ -138,9 +171,9 @@ export default function CookieConsent() {
                 {/* Analytics Cookies */}
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                   <div>
-                    <h3 className="text-white font-medium">Analityczne</h3>
+                    <h3 className="text-white font-medium">{t('cookies.modal.analytics.title')}</h3>
                     <p className="text-white/70 text-sm mt-1">
-                      Pomagają nam zrozumieć, jak użytkownicy korzystają z naszej strony.
+                      {t('cookies.modal.analytics.description')}
                     </p>
                   </div>
                   <div className="relative">
@@ -157,9 +190,9 @@ export default function CookieConsent() {
                 {/* Marketing Cookies */}
                 <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
                   <div>
-                    <h3 className="text-white font-medium">Marketingowe</h3>
+                    <h3 className="text-white font-medium">{t('cookies.modal.marketing.title')}</h3>
                     <p className="text-white/70 text-sm mt-1">
-                      Używane do wyświetlania spersonalizowanych reklam i treści.
+                      {t('cookies.modal.marketing.description')}
                     </p>
                   </div>
                   <div className="relative">
@@ -179,13 +212,13 @@ export default function CookieConsent() {
                   onClick={() => setShowSettings(false)}
                   className="px-4 py-2 text-white border border-white/20 rounded hover:bg-white/5 transition-colors"
                 >
-                  Anuluj
+                  {t('cookies.modal.cancel')}
                 </button>
                 <button
                   onClick={handleSaveSettings}
                   className="px-4 py-2 bg-[#f36e21] text-white rounded hover:bg-[#ff7b2e] transition-colors"
                 >
-                  Zapisz ustawienia
+                  {t('cookies.modal.save')}
                 </button>
               </div>
             </motion.div>

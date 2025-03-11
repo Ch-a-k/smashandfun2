@@ -5,6 +5,7 @@ import { BlogPost } from '@/types/blog';
 import Image from 'next/image';
 import { Clock, Calendar, X } from 'lucide-react';
 import { useEffect } from 'react';
+import { useI18n } from '@/i18n/I18nContext';
 
 interface BlogPostPopupProps {
   post: BlogPost | null;
@@ -12,6 +13,8 @@ interface BlogPostPopupProps {
 }
 
 export default function BlogPostPopup({ post, onClose }: BlogPostPopupProps) {
+  const { t } = useI18n();
+
   // Блокируем скролл основной страницы когда попап открыт
   useEffect(() => {
     if (post) {
@@ -58,6 +61,7 @@ export default function BlogPostPopup({ post, onClose }: BlogPostPopupProps) {
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-2 transition-all duration-200 z-10"
+            aria-label={t('common.close')}
           >
             <X className="w-6 h-6" />
           </button>
@@ -96,7 +100,7 @@ export default function BlogPostPopup({ post, onClose }: BlogPostPopupProps) {
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="w-4 h-4 text-[#f36e21]" />
-                  <span>{post.readTime} min czytania</span>
+                  <span>{post.readTime} {t('blog.readTime')}</span>
                 </div>
               </motion.div>
             </div>
@@ -122,15 +126,21 @@ export default function BlogPostPopup({ post, onClose }: BlogPostPopupProps) {
               <div className="mt-8 sm:mt-10 pt-6 border-t border-white/10">
                 <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-6 relative">
                   <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-10 rounded-xl pointer-events-none"></div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">Chcesz uwolnić się od stresu?</h3>
-                  <p className="text-white/70 mb-4 text-sm sm:text-base">Przyjdź do Smash&Fun i skorzystaj z naszego pokoju furii - idealnego miejsca na rozładowanie napięcia!</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">
+                    {t('blog.ctaSection.title')}
+                  </h3>
+                  <p className="text-white/70 mb-4 text-sm sm:text-base">
+                    {t('blog.ctaSection.subtitle')}
+                  </p>
                   <a
-                    href="/kontakt"
+                    href="https://smashandfun.simplybook.it/v2/#book/count/1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-block px-5 py-2 sm:px-6 sm:py-3 bg-[#f36e21] text-white font-bold rounded-lg
                       transform transition-all duration-200 hover:scale-105 hover:bg-[#ff7b2e]
                       focus:outline-none focus:ring-2 focus:ring-[#f36e21] focus:ring-opacity-50"
                   >
-                    ZAREZERWUJ WIZYTĘ
+                    {t('blog.ctaSection.cta')}
                   </a>
                 </div>
               </div>

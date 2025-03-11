@@ -4,14 +4,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Gift, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useI18n } from '@/i18n/I18nContext';
 
 export function VoucherSection() {
-  const benefits = [
-    "Idealny pomysł na prezent urodzinowy",
-    "Voucher ważny przez 6 miesięcy",
-    "Możliwość wyboru dowolnego pakietu",
-    "Natychmiastowa dostawa na email"
-  ];
+  const { t } = useI18n();
 
   return (
     <section className="relative w-full bg-[#0f0f12] py-32 ">
@@ -40,19 +36,25 @@ export function VoucherSection() {
                 className="inline-block"
               >
                 <span className="text-xs font-bold tracking-widest uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#f36e21] to-[#ff9f58] mb-3 block">
-                  VOUCHER PREZENTOWY
+                  {t('home.voucher.title')}
                 </span>
                 <h2 className="text-4xl md:text-5xl font-bold text-white">
-                  Podaruj niezapomniane <br/>
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#f36e21] to-[#ff9f58]">
-                    emocje
-                  </span>
+                  {t('home.voucher.subtitle')}
                 </h2>
               </motion.div>
 
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="text-lg text-white/70"
+              >
+                {t('home.voucher.description')}
+              </motion.p>
+
               {/* Benefits list */}
               <div className="space-y-4">
-                {benefits.map((benefit, index) => (
+                {t('home.voucher.benefits', { returnObjects: true }).map((benefit: string, index: number) => (
                   <motion.div
                     key={benefit}
                     initial={{ opacity: 0, x: -20 }}
@@ -78,7 +80,7 @@ export function VoucherSection() {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 
                               translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <Gift className="w-5 h-5" />
-                <span className="font-semibold">KUP VOUCHER</span>
+                <span className="font-semibold">{t('home.voucher.cta')}</span>
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </div>
