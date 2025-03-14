@@ -20,7 +20,7 @@ export const en = {
   },
   home: {
     hero: {
-      title: 'DEMOLITION #1 IN WARSAW',
+      title: 'RAGE ROOM #1 IN WARSAW',
       subtitle: 'Release stress and emotions in the most exciting way!',
       description: 'Break, smash, and destroy in a safe environment. Experience the ultimate stress relief therapy in our specially designed rage room.',
       cta: 'I WANT TO TRY!'
@@ -231,11 +231,11 @@ export const en = {
       },
       phone: {
         title: 'Phone',
-        number: '+48 667 797 730'
+        number: '+48 881 281 313'
       },
       email: {
         title: 'Email',
-        address: 'biuro@smashandfun.pl'
+        address: 'hello@smashandfun.pl'
       },
       openingHours: {
         title: 'Opening Hours',
@@ -297,7 +297,7 @@ export const en = {
     cta: {
       title: 'Still have questions?',
       description: 'Our team is here to help! Send us an email and we\'ll get back to you as soon as possible.',
-      email: 'info@smashandfun.pl',
+      email: 'hello@smashandfun.pl',
       button: 'CONTACT US'
     }
   },
@@ -356,7 +356,7 @@ export const en = {
           '• Right to restrict processing',
           '• Right to data portability',
           '• Right to object to data processing',
-          'To exercise these rights, please contact us at: biuro@smashandfun.pl'
+          'To exercise these rights, please contact us at: hello@smashandfun.pl'
         ]
       }
     }
@@ -506,7 +506,7 @@ export const en = {
         content: [
           "3.1. Reservations can be made:",
           "a) Through the online booking system at www.smashandfun.pl",
-          "b) By phone at +48 667 797 730 between 10:00-22:00",
+          "b) By phone at +48 881 281 313 between 10:00-22:00",
           "c) In person at the premises during opening hours",
           "3.2. Reservation process includes:",
           "a) Package and time slot selection",
@@ -692,7 +692,7 @@ export const en = {
     contact: {
       title: 'Contact',
       phone: 'Tel: +48 881 281 313',
-      email: 'Email: info@smashandfun.pl',
+      email: 'Email: hello@smashandfun.pl',
       address: 'Address: Postępu 19/4, 02-676 Warsaw'
     },
     social: {

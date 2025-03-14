@@ -120,7 +120,7 @@ export default function Kontakt() {
                       {t('contact.info.phone.title')}
                     </p>
                     <p className="text-white/70">
-                      <a href="tel:+48667797730" className="hover:text-white transition-colors">
+                      <a href="tel:+48881281313" className="hover:text-white transition-colors">
                         {t('contact.info.phone.number')}
                       </a>
                     </p>
@@ -131,7 +131,7 @@ export default function Kontakt() {
                       {t('contact.info.email.title')}
                     </p>
                     <p className="text-white/70">
-                      <a href="mailto:biuro@smashandfun.pl" className="hover:text-white transition-colors">
+                      <a href="mailto:hello@smashandfun.pl" className="hover:text-white transition-colors">
                         {t('contact.info.email.address')}
                       </a>
                     </p>

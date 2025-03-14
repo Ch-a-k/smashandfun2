@@ -249,11 +249,11 @@ export const pl = {
       },
       phone: {
         title: 'Telefon',
-        number: '+48 667 797 730'
+        number: '+48 881 281 313'
       },
       email: {
         title: 'E-mail',
-        address: 'biuro@smashandfun.pl'
+        address: 'hello@smashandfun.pl'
       },
       openingHours: {
         title: 'Godziny otwarcia',
@@ -315,7 +315,7 @@ export const pl = {
     cta: {
       title: 'Masz więcej pytań?',
       description: 'Nasz zespół jest tutaj, aby pomóc! Wyślij nam e-mail, a odpowiemy najszybciej jak to możliwe.',
-      email: 'info@smashandfun.pl',
+      email: 'hello@smashandfun.pl',
       button: 'SKONTAKTUJ SIĘ'
     }
   },
@@ -374,7 +374,7 @@ export const pl = {
           '• Prawo do ograniczenia przetwarzania',
           '• Prawo do przenoszenia danych',
           '• Prawo do sprzeciwu wobec przetwarzania danych',
-          'W celu realizacji tych praw prosimy o kontakt na adres: biuro@smashandfun.pl'
+          'W celu realizacji tych praw prosimy o kontakt na adres: hello@smashandfun.pl'
         ]
       }
     }
@@ -524,7 +524,7 @@ export const pl = {
         content: [
           "3.1. Rezerwacji można dokonać:",
           "a) Poprzez system rezerwacji online na stronie www.smashandfun.pl",
-          "b) Telefonicznie pod numerem +48 667 797 730 w godzinach 10:00-22:00",
+          "b) Telefonicznie pod numerem +48 881 281 313 w godzinach 10:00-22:00",
           "c) Osobiście w lokalu w godzinach otwarcia",
           "3.2. Proces rezerwacji obejmuje:",
           "a) Wybór pakietu i terminu",
@@ -710,7 +710,7 @@ export const pl = {
     contact: {
       title: 'Kontakt',
       phone: 'Tel: +48 881 281 313',
-      email: 'Email: info@smashandfun.pl',
+      email: 'Email: hello@smashandfun.pl',
       address: 'Adres: Postępu 19/4, 02-676 Warszawa'
     },
     social: {

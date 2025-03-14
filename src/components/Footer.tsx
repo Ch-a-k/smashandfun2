@@ -28,7 +28,7 @@ export default function Footer() {
       title: t('footer.contact.title'),
       links: [
         { name: t('footer.contact.phone'), href: 'tel:+48881281313' },
-        { name: t('footer.contact.email'), href: 'mailto:info@smashandfun.pl' },
+        { name: t('footer.contact.email'), href: 'mailto:hello@smashandfun.pl' },
         { name: t('footer.contact.address'), href: 'https://maps.app.goo.gl/9cZfgssYz5ZofRPb8' },
       ]
     },
