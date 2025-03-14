@@ -20,7 +20,7 @@ export const en = {
   },
   home: {
     hero: {
-      title: 'RAGE ROOM #1 IN WARSAW',
+      title: 'DEMOLITION #1 IN WARSAW',
       subtitle: 'Release stress and emotions in the most exciting way!',
       description: 'Break, smash, and destroy in a safe environment. Experience the ultimate stress relief therapy in our specially designed rage room.',
       cta: 'I WANT TO TRY!'
@@ -40,6 +40,20 @@ export const en = {
           furniture: 'Furniture (1 pc)',
           electronic: 'Electronic Device (1 pc)',
           gloves: 'Safety gloves'
+        }
+      },
+      extraItems: {
+        title: 'Extra Items',
+        subtitle: 'Additionally to your selected package you can purchase items from the list:',
+        items: {
+          glass: '10 glass items - 50 PLN',
+          keyboard: 'Keyboard - 20 PLN',
+          tvMonitor: 'TV/monitor - 100 PLN',
+          furniture: 'Furniture - 120 PLN',
+          printer: 'Printer - 50 PLN',
+          mouse: 'Computer mouse - 10 PLN',
+          phone: 'Phone - 30 PLN',
+          goProRecording: 'GoPro recording - 50 PLN'
         }
       },
       packages: {
@@ -98,6 +112,11 @@ export const en = {
           ubranie: 'Protective clothing',
           kask: 'Safety helmet',
           rękawice: 'Safety gloves'
+        },
+        tooltips: {
+          ubranie: 'Protects your clothes',
+          kask: 'Protects your head',
+          rękawice: 'Protects your eyes'
         }
       }
     },
@@ -689,5 +708,23 @@ export const en = {
       privacyPolicy: 'Privacy Policy',
       terms: 'Terms & Conditions'
     }
+  },
+  happyHours: {
+    title: 'HAPPY HOURS',
+    subtitle: 'Special offer for early birds!',
+    schedule: {
+      title: 'Schedule',
+      weekdays: 'Monday - Friday',
+      time: '12:00 - 16:00',
+      discountname: 'Discount',
+      discount: '-20%'
+    },
+    benefits: [
+      'Lower prices',
+      'Less crowded',
+      'Same great experience',
+      'Full equipment included'
+    ],
+    cta: 'BOOK HAPPY HOURS'
   }
 };

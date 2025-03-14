@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useI18n } from '@/i18n/I18nContext';
 import { ArrowRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const events = ['party', 'corporate', 'kids'] as const;
 
@@ -15,9 +16,10 @@ const fadeInUp = {
 
 export function EventsSection() {
   const { t } = useI18n();
+  const router = useRouter();
 
-  const navigateToPricing = () => {
-    window.location.href = '/#pricing';
+  const navigateToContactForm = () => {
+    router.push('/kontakt#contact-form');
   };
 
   return (
@@ -64,7 +66,7 @@ export function EventsSection() {
                   variants={fadeInUp}
                 >
                   <button
-                    onClick={navigateToPricing}
+                    onClick={navigateToContactForm}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#f36e21] text-white font-semibold rounded-lg
                       transform transition-all duration-200 hover:bg-[#ff7b2e] hover:scale-105
                       focus:outline-none focus:ring-2 focus:ring-[#f36e21] focus:ring-opacity-50"

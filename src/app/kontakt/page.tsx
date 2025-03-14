@@ -155,6 +155,7 @@ export default function Kontakt() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="md:col-span-2 bg-white/5 backdrop-blur-sm rounded-2xl p-8 relative"
+                id="contact-form"
               >
                 {/* Glass effect overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-10 rounded-2xl pointer-events-none" />

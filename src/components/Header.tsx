@@ -7,11 +7,14 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useI18n } from '@/i18n/I18nContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import { Clock } from 'lucide-react';
+import HappyHoursModal from './HappyHoursModal';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHappyHoursOpen, setIsHappyHoursOpen] = useState(false);
   const pathname = usePathname();
   const { t } = useI18n();
 
@@ -61,79 +64,93 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
+  const openHappyHours = () => {
+    setIsHappyHoursOpen(true);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <>
-      <header
+      <motion.header
         className={`fixed top-0 left-0 right-0 z-[110] transition-all duration-300 ${
           !isVisible ? 'translate-y-[-100%]' : 'translate-y-0'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link href="/" className="relative">
-              <Image
-                src="/images/logo.png"
-                alt="Smash&Fun Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto"
-              />
-            </Link>
+        <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="relative z-10">
+            <Image
+              src="/images/logo.png"
+              alt="Smash&Fun Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
+          </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={` text-lg font-impact uppercase tracking-wide transition-colors ${
-                    pathname === link.href
-                      ? 'text-[#f36e21]'
-                      : 'text-white hover:text-[#f36e21]'
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={` text-lg font-impact uppercase tracking-wide transition-colors ${
+                  pathname === link.href
+                    ? 'text-[#f36e21]'
+                    : 'text-white hover:text-[#f36e21]'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            
+            
+            
+          </nav>
+
+          <div className="flex items-center space-x-4">
+            <LanguageSwitcher />
+            {/* Happy Hours Button */}
+            <button
+              onClick={openHappyHours}
+              className="p-2 rounded-lg bg-[#f36e21]/10 text-[#f36e21] hover:bg-[#f36e21]/20 transition-colors"
+              aria-label="Happy Hours"
+            >
+              <Clock className="w-5 h-5" />
+            </button>
+            <button
+              onClick={scrollToServices}
+              className="hidden md:block bg-[#f36e21] text-white px-4 py-2 rounded-lg font-impact uppercase tracking-wide hover:bg-[#f36e21]/90 transition-colors"
+            >
+              {t('common.bookNow')}
+            </button>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="relative z-10 md:hidden p-2"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span
+                  className={`w-full h-0.5 bg-current transform transition-all duration-200 origin-left ${
+                    isMobileMenuOpen ? 'rotate-45 translate-x-px' : ''
                   }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            <div className="flex items-center space-x-4">
-              <LanguageSwitcher />
-              <button
-                onClick={scrollToServices}
-                className="hidden md:block bg-[#f36e21] text-white px-4 py-2 rounded-lg font-impact uppercase tracking-wide hover:bg-[#f36e21]/90 transition-colors"
-              >
-                {t('common.bookNow')}
-              </button>
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden relative z-[120] p-2 text-white"
-                aria-label="Toggle menu"
-              >
-                <div className="w-6 h-5 flex flex-col justify-between">
-                  <span
-                    className={`w-full h-0.5 bg-current transform transition-all duration-200 origin-left ${
-                      isMobileMenuOpen ? 'rotate-45 translate-x-px' : ''
-                    }`}
-                  />
-                  <span
-                    className={`w-full h-0.5 bg-current transition-all duration-200 ${
-                      isMobileMenuOpen ? 'opacity-0' : ''
-                    }`}
-                  />
-                  <span
-                    className={`w-full h-0.5 bg-current transform transition-all duration-200 origin-left ${
-                      isMobileMenuOpen ? '-rotate-45 translate-x-px' : ''
-                    }`}
-                  />
-                </div>
-              </button>
-            </div>
+                />
+                <span
+                  className={`w-full h-0.5 bg-current transition-all duration-200 ${
+                    isMobileMenuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`w-full h-0.5 bg-current transform transition-all duration-200 origin-left ${
+                    isMobileMenuOpen ? '-rotate-45 translate-x-px' : ''
+                  }`}
+                />
+              </div>
+            </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu - Outside of header */}
       <AnimatePresence>
@@ -190,20 +207,28 @@ export default function Header() {
                     </button>
                   </motion.div>
 
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="pt-4"
+                  {/* Happy Hours Button */}
+                  <button
+                    onClick={openHappyHours}
+                    className="p-3 rounded-full bg-[#f36e21]/10 text-[#f36e21]"
+                    aria-label="Happy Hours"
                   >
-                    <LanguageSwitcher />
-                  </motion.div>
+                    <Clock className="w-6 h-6" />
+                  </button>
+
+                  <LanguageSwitcher />
                 </div>
               </nav>
             </motion.div>
           </>
         )}
       </AnimatePresence>
+
+      {/* Happy Hours Modal */}
+      <HappyHoursModal
+        isOpen={isHappyHoursOpen}
+        onClose={() => setIsHappyHoursOpen(false)}
+      />
     </>
   );
 }

@@ -54,7 +54,7 @@ export function LoungeSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="h-[150px] relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent 
+              <div className="h-full w-full relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/[0.08] to-transparent 
                             backdrop-blur-sm border border-white/[0.08] p-8">
                 <div className="absolute inset-0 bg-gradient-to-r from-[#f36e21]/0 via-[#f36e21]/5 to-[#f36e21]/0 
                               translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>

@@ -15,9 +15,10 @@ import {
   Glasses,
   Wrench
 } from 'lucide-react'
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import Link from 'next/link'
 import { FloatingImages } from '@/components/FloatingImages'
+import { ExtraItemsSection } from '@/components/ExtraItemsSection'
 
 // Types
 type Tool = 'ubranie' | 'kask' | 'rękawice'
@@ -104,6 +105,27 @@ function PackageItems({ items, isBestseller }: { items: string[], isBestseller?:
   )
 }
 
+// Компонент для всплывающей подсказки
+function Tooltip({ content, children }: { content: string, children: React.ReactNode }) {
+  const [isVisible, setIsVisible] = useState(false);
+  
+  return (
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsVisible(true)}
+      onMouseLeave={() => setIsVisible(false)}
+    >
+      {children}
+      {isVisible && (
+        <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/80 text-white text-xs rounded whitespace-nowrap z-50">
+          {content}
+          <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black/80"></div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function PackageTools({ tools, isBestseller }: { tools: Tool[], isBestseller?: boolean }) {
   const { t } = useI18n()
   
@@ -115,16 +137,20 @@ function PackageTools({ tools, isBestseller }: { tools: Tool[], isBestseller?: b
       </div>
       <div className="flex gap-3">
         {tools.map((tool) => (
-          <div 
-            key={tool}
-            className={cn(
-              "p-2 rounded-lg",
-              "bg-white/5 border border-white/10",
-              isBestseller && "text-[#f36e21]"
-            )}
+          <Tooltip 
+            key={tool} 
+            content={t(`home.pricing.equipment.tooltips.${tool}`)}
           >
-            {TOOL_ICONS[tool]}
-          </div>
+            <div 
+              className={cn(
+                "p-2 rounded-lg",
+                "bg-white/5 border border-white/10",
+                isBestseller && "text-[#f36e21]"
+              )}
+            >
+              {TOOL_ICONS[tool]}
+            </div>
+          </Tooltip>
         ))}
       </div>
     </div>
@@ -132,17 +158,15 @@ function PackageTools({ tools, isBestseller }: { tools: Tool[], isBestseller?: b
 }
 
 function PackageInfo({ people, duration }: { people: string, duration: string }) {
-  const { t } = useI18n()
-  
   return (
     <div className="flex items-center justify-between text-sm text-white/60 pt-2">
       <div className="flex items-center gap-1.5">
         <Users className="w-4 h-4" />
-        {t(`home.pricing.people.${people.replace(/\s+osoby|\s+osób/g, '')}`)}
+        {people}
       </div>
       <div className="flex items-center gap-1.5">
         <Clock className="w-4 h-4" />
-        {t(`home.pricing.duration.${duration.replace(/\D/g, '')}`)}
+        {duration}
       </div>
     </div>
   )
@@ -230,24 +254,16 @@ export function PricingSection() {
   const { t } = useI18n()
 
   const packages: Package[] = [
-    {
-      name: 'BUŁKA Z MASŁEM',
-      items: t('home.pricing.packages.easy.items', { returnObjects: true }) as string[],
+    
+    
+        {
+      name: 'TRUDNY',
+      items: t('home.pricing.packages.extreme.items', { returnObjects: true }) as string[],
       tools: ['ubranie', 'kask', 'rękawice'],
-      people: t('home.pricing.people.1-2'),
-      duration: t('home.pricing.duration.30'),
-      price: '199',
-      difficulty: t('home.pricing.packages.easy.difficulty'),
-      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
-    },
-    {
-      name: 'ŁATWY',
-      items: t('home.pricing.packages.medium.items', { returnObjects: true }) as string[],
-      tools: ['ubranie', 'kask', 'rękawice'],
-      people: t('home.pricing.people.1-2'),
-      duration: t('home.pricing.duration.45'),
-      price: '299',
-      difficulty: t('home.pricing.packages.medium.difficulty'),
+      people: t('home.pricing.people.1-6'),
+      duration: t('home.pricing.duration.180'),
+      price: '999',
+      difficulty: t('home.pricing.packages.extreme.difficulty'),
       bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
     },
     {
@@ -262,15 +278,25 @@ export function PricingSection() {
       isBestseller: true
     },
     {
-      name: 'TRUDNY',
-      items: t('home.pricing.packages.extreme.items', { returnObjects: true }) as string[],
+      name: 'ŁATWY',
+      items: t('home.pricing.packages.medium.items', { returnObjects: true }) as string[],
       tools: ['ubranie', 'kask', 'rękawice'],
-      people: t('home.pricing.people.1-6'),
-      duration: t('home.pricing.duration.180'),
-      price: '999',
-      difficulty: t('home.pricing.packages.extreme.difficulty'),
+      people: t('home.pricing.people.1-2'),
+      duration: t('home.pricing.duration.45'),
+      price: '299',
+      difficulty: t('home.pricing.packages.medium.difficulty'),
       bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
-    }
+    },
+    {
+      name: 'BUŁKA Z MASŁEM',
+      items: t('home.pricing.packages.easy.items', { returnObjects: true }) as string[],
+      tools: ['ubranie', 'kask', 'rękawice'],
+      people: t('home.pricing.people.1-2'),
+      duration: t('home.pricing.duration.30'),
+      price: '199',
+      difficulty: t('home.pricing.packages.easy.difficulty'),
+      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
+    },
   ]
 
   return (
@@ -293,6 +319,7 @@ export function PricingSection() {
           ))}
         </div>
       </div>
+      <ExtraItemsSection />
     </section>
   )
 }

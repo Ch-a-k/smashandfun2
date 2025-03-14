@@ -11,6 +11,18 @@ export interface Translations {
     reject: string;
     settings: string;
   };
+  happyHours: {
+    title: string;
+    subtitle: string;
+    schedule: {
+      title: string;
+      weekdays: string;
+      time: string;
+      discount: string;
+    };
+    benefits: string[];
+    cta: string;
+  };
   nav: {
     home: string;
     organizeParty: string;
@@ -40,6 +52,20 @@ export interface Translations {
           furniture: string;
           electronic: string;
           gloves: string;
+        };
+      };
+      extraItems: {
+        title: string;
+        subtitle: string;
+        items: {
+          glass: string;
+          keyboard: string;
+          tvMonitor: string;
+          furniture: string;
+          printer: string;
+          mouse: string;
+          phone: string;
+          goProRecording: string;
         };
       };
       packages: {
@@ -78,6 +104,11 @@ export interface Translations {
       equipment: {
         included: string;
         items: {
+          ubranie: string;
+          kask: string;
+          rękawice: string;
+        };
+        tooltips: {
           ubranie: string;
           kask: string;
           rękawice: string;

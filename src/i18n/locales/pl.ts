@@ -11,6 +11,24 @@ export const pl = {
     reject: 'Odrzuć',
     settings: 'Ustawienia'
   },
+  happyHours: {
+    title: 'HAPPY HOURS',
+    subtitle: 'Specjalna oferta dla rannych ptaszków!',
+    schedule: {
+      title: 'Harmonogram',
+      weekdays: 'Poniedziałek - Piątek',
+      time: '12:00 - 16:00',
+      discountname: 'Rabat',
+      discount: '-20%'
+    },
+    benefits: [
+      'Niższe ceny',
+      'Mniej tłoczno',
+      'To samo świetne doświadczenie',
+      'Pełne wyposażenie w cenie'
+    ],
+    cta: 'ZAREZERWUJ HAPPY HOURS'
+  },
   nav: {
     home: 'STRONA GŁÓWNA',
     organizeParty: 'ORGANIZACJA IMPREZ',
@@ -20,7 +38,7 @@ export const pl = {
   },
   home: {
     hero: {
-      title: 'POKÓJ ZŁOŚCI #1 W WARSZAWIE',
+      title: 'DEMOLKA #1 W WARSZAWIE',
       subtitle: 'Uwolnij stres i emocje w najbardziej ekscytujący sposób!',
       description: 'Rozbijaj, niszcz i demoluj w bezpiecznym otoczeniu. Doświadcz najlepszej terapii antystresowej w naszym specjalnie zaprojektowanym pokoju złości.',
       cta: 'CHCĘ SPRÓBOWAĆ!'
@@ -40,6 +58,20 @@ export const pl = {
           furniture: 'Mebel (1 szt.)',
           electronic: 'Urządzenie elektroniczne (1 szt.)',
           gloves: 'Rękawice ochronne'
+        }
+      },
+      extraItems: {
+        title: 'Dodatkowe przedmioty',
+        subtitle: 'Dodatkowo do wybranego pakietu możesz dokupić przedmioty z listy:',
+        items: {
+          glass: '10 szklanych przedmiotów - 50 PLN',
+          keyboard: 'Klawiatura - 20 PLN',
+          tvMonitor: 'TV/monitor - 100 PLN',
+          furniture: 'Meble - 120 PLN',
+          printer: 'Drukarka - 50 PLN',
+          mouse: 'Mysz komputerowa - 10 PLN',
+          phone: 'Telefon - 30 PLN',
+          goProRecording: 'Nagranie z pomocą GoPro - 50 PLN'
         }
       },
       packages: {
@@ -98,6 +130,11 @@ export const pl = {
           ubranie: 'Ubranie ochronne',
           kask: 'Kask ochronny',
           rękawice: 'Rękawice ochronne'
+        },
+        tooltips: {
+          ubranie: 'Chroni twoje ubrania',
+          kask: 'Chroni twoją głowę',
+          rękawice: 'Chroni twoje oczy'
         }
       }
     },
