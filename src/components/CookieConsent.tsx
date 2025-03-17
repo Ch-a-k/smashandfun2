@@ -61,9 +61,22 @@ export default function CookieConsent() {
       marketing: true,
     };
     try {
+      // Получаем текущие настройки из localStorage
+      const currentConsent = localStorage.getItem('cookieConsent');
+      const currentSettings = currentConsent ? JSON.parse(currentConsent) : defaultSettings;
+      
+      // Сохраняем новые настройки
       localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
       setSettings(allAccepted);
       setShowBanner(false);
+      
+      // Если настройки аналитики изменились, перезагружаем страницу для применения изменений
+      if (currentSettings?.analytics !== allAccepted.analytics) {
+        // Задержка перед перезагрузкой, чтобы модальное окно успело закрыться
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      }
     } catch (error) {
       console.error('Error saving cookie consent:', error);
     }
@@ -71,9 +84,22 @@ export default function CookieConsent() {
 
   const handleSaveSettings = () => {
     try {
+      // Получаем текущие настройки из localStorage
+      const currentConsent = localStorage.getItem('cookieConsent');
+      const currentSettings = currentConsent ? JSON.parse(currentConsent) : defaultSettings;
+      
+      // Сохраняем новые настройки
       localStorage.setItem('cookieConsent', JSON.stringify(settings));
       setShowBanner(false);
       setShowSettings(false);
+      
+      // Если настройки аналитики изменились, перезагружаем страницу для применения изменений
+      if (currentSettings?.analytics !== settings.analytics) {
+        // Задержка перед перезагрузкой, чтобы модальное окно успело закрыться
+        setTimeout(() => {
+          window.location.reload();
+        }, 300);
+      }
     } catch (error) {
       console.error('Error saving cookie settings:', error);
     }

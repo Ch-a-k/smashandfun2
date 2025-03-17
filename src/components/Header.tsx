@@ -10,6 +10,32 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { Clock } from 'lucide-react';
 import HappyHoursModal from './HappyHoursModal';
 
+// Функция для установки куки
+const setCookie = (name: string, value: string, days: number) => {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+};
+
+// Функция для получения значения куки
+const getCookie = (name: string) => {
+  const cookieName = name + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+    let c = cookieArray[i];
+    while (c.charAt(0) === ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(cookieName) === 0) {
+      return c.substring(cookieName.length, c.length);
+    }
+  }
+  return "";
+};
+
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -17,6 +43,37 @@ export default function Header() {
   const [isHappyHoursOpen, setIsHappyHoursOpen] = useState(false);
   const pathname = usePathname();
   const { t } = useI18n();
+
+  // Автоматическое открытие Happy Hours при загрузке страницы
+  useEffect(() => {
+    // Проверка должна выполняться только на клиенте
+    if (typeof window === 'undefined') return;
+    
+    try {
+      // Проверяем, когда модальное окно было закрыто последний раз (из куки)
+      const lastClosedTime = getCookie('happyHoursLastClosed');
+      const shouldShowModal = !lastClosedTime || (Date.now() - parseInt(lastClosedTime)) > 24 * 60 * 60 * 1000;
+      
+      console.log('Should show HappyHours modal on load:', shouldShowModal);
+      
+      // Если прошло более 24 часов или пользователь еще не закрывал модальное окно
+      if (shouldShowModal) {
+        // Задержка для обеспечения корректной загрузки страницы
+        const timer = setTimeout(() => {
+          setIsHappyHoursOpen(true);
+        }, 500);
+        
+        return () => clearTimeout(timer);
+      }
+    } catch (error) {
+      console.error('Error checking HappyHours cookie:', error);
+    }
+  }, []);
+
+  // Добавляем диагностику для отслеживания состояния модального окна
+  useEffect(() => {
+    console.log('Header: HappyHours modal state changed:', isHappyHoursOpen);
+  }, [isHappyHoursOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,9 +121,29 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const openHappyHours = () => {
-    setIsHappyHoursOpen(true);
+  const openHappyHours = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('Header: Opening HappyHours modal');
+    setIsHappyHoursOpen(prev => {
+      console.log('Header: Setting HappyHours modal to:', !prev);
+      return !prev;
+    });
     setIsMobileMenuOpen(false);
+  };
+
+  // Функция закрытия модального окна с сохранением времени в куки
+  const closeHappyHours = () => {
+    try {
+      console.log('Header: Closing HappyHours modal and saving timestamp in cookie');
+      // Сохраняем текущее время закрытия в куки (срок действия 30 дней, но проверка через 24 часа)
+      const timestamp = Date.now().toString();
+      setCookie('happyHoursLastClosed', timestamp, 30);
+      setIsHappyHoursOpen(false);
+    } catch (error) {
+      console.error('Error saving HappyHours cookie:', error);
+      setIsHappyHoursOpen(false);
+    }
   };
 
   return (
@@ -227,7 +304,7 @@ export default function Header() {
       {/* Happy Hours Modal */}
       <HappyHoursModal
         isOpen={isHappyHoursOpen}
-        onClose={() => setIsHappyHoursOpen(false)}
+        onClose={closeHappyHours}
       />
     </>
   );
