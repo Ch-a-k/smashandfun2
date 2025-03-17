@@ -146,7 +146,7 @@ export default function FAQ() {
                 {t('faq.cta.description')}
               </p>
               <a
-                href={`mailto:${t('faq.cta.email')}`}
+                href="/kontakt#contact-form"
                 className="inline-block px-8 py-4 bg-[#f36e21] text-white font-bold rounded-lg
                   transform transition-all duration-200 hover:scale-105 hover:bg-[#ff7b2e]
                   focus:outline-none focus:ring-2 focus:ring-[#f36e21] focus:ring-opacity-50"

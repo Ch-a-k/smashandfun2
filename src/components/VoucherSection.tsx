@@ -1,13 +1,39 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { Gift, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useI18n } from '@/i18n/I18nContext';
 
 export function VoucherSection() {
   const { t } = useI18n();
+  const router = useRouter();
+  
+  // Функция для перехода к форме контактов с фокусом на первое поле
+  const goToContactForm = useCallback((e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // Перенаправляем на страницу контактов
+    router.push('/kontakt#contact-form');
+    
+    // Скрипт для фокуса будет выполнен после загрузки страницы
+    // Используем setTimeout, чтобы дать время для рендеринга страницы
+    setTimeout(() => {
+      // Скроллим к форме
+      const formElement = document.getElementById('contact-form');
+      if (formElement) {
+        formElement.scrollIntoView({ behavior: 'smooth' });
+        
+        // Фокусируемся на первом поле формы (name)
+        const nameInput = document.getElementById('name');
+        if (nameInput) {
+          nameInput.focus();
+        }
+      }
+    }, 500);
+  }, [router]);
 
   return (
     <section className="relative w-full bg-[#0f0f12] py-32 ">
@@ -72,17 +98,19 @@ export function VoucherSection() {
               </div>
 
               {/* CTA Button */}
-              <motion.button
+              <motion.a
+                href="/kontakt#contact-form"
+                onClick={goToContactForm}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group relative inline-flex items-center gap-2 bg-[#f36e21] text-white px-8 py-4 rounded-xl overflow-hidden"
+                className="group relative inline-flex items-center gap-2 bg-[#f36e21] text-white px-8 py-4 rounded-xl overflow-hidden cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 
                               translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <Gift className="w-5 h-5" />
                 <span className="font-semibold">{t('home.voucher.cta')}</span>
                 <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              </motion.a>
             </div>
           </motion.div>
 

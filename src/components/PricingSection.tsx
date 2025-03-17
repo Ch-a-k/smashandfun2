@@ -264,7 +264,7 @@ export function PricingSection() {
       duration: t('home.pricing.duration.180'),
       price: '999 PLN',
       difficulty: t('home.pricing.packages.extreme.difficulty'),
-      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
+      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/service/5/count/1/',
     },
     {
       name: 'ŚREDNI',
@@ -274,7 +274,7 @@ export function PricingSection() {
       duration: t('home.pricing.duration.120'),
       price: '499 PLN',
       difficulty: t('home.pricing.packages.hard.difficulty'),
-      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
+      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/service/4/count/1/',
       isBestseller: true
     },
     {
@@ -285,7 +285,7 @@ export function PricingSection() {
       duration: t('home.pricing.duration.45'),
       price: '299 PLN',
       difficulty: t('home.pricing.packages.medium.difficulty'),
-      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
+      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/service/3/count/1/',
     },
     {
       name: 'BUŁKA Z MASŁEM',
@@ -295,7 +295,7 @@ export function PricingSection() {
       duration: t('home.pricing.duration.30'),
       price: '199 PLN',
       difficulty: t('home.pricing.packages.easy.difficulty'),
-      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/count/1/',
+      bookingUrl: 'https://smashandfun.simplybook.it/v2/#book/service/2/count/1/',
     },
   ]
 
