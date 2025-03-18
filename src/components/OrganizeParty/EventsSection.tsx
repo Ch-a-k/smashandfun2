@@ -23,7 +23,7 @@ export function EventsSection() {
   };
 
   return (
-    <section className="w-full bg-[#231f20] py-24">
+    <section id="events-section" className="w-full bg-[#231f20] py-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="space-y-24">
           {events.map((eventKey, index) => (
@@ -44,6 +44,7 @@ export function EventsSection() {
                     src={`/images/${eventKey}.png`}
                     alt={t(`organizeParty.events.${eventKey}.title`)}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1a1718] to-transparent opacity-60" />

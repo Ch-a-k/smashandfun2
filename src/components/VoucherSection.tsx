@@ -130,6 +130,7 @@ export function VoucherSection() {
                 src="/images/voucher.png"
                 alt="Smash&Fun Voucher"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain p-8 transform group-hover:scale-105 transition-transform duration-700 ease-out"
                 priority
               />

@@ -78,13 +78,11 @@ export function I18nProvider({ children }: I18nProviderProps) {
       let value: any = translations[locale];
 
       if (!value) {
-        console.error(`No translations found for locale: ${locale}`);
         return key;
       }
 
       for (const k of keys) {
         if (value[k] === undefined) {
-          console.warn(`Translation key not found: ${key}`);
           return key;
         }
         value = value[k];
@@ -98,10 +96,8 @@ export function I18nProvider({ children }: I18nProviderProps) {
         return value;
       }
 
-      console.warn(`Translation value is not a string: ${key}`);
       return key;
-    } catch (error) {
-      console.error(`Error getting translation for key: ${key}`, error);
+    } catch {
       return key;
     }
   };

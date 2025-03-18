@@ -57,13 +57,16 @@ export default function Footer() {
             transition={{ ...fadeInUpAnimation.transition, delay: 0.1 }}
           >
             <Link href="/" className="inline-block group">
-              <Image
-                src="/images/logo.png"
-                alt="Smash&Fun Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
-              />
+              <div style={{ width: '150px', height: '40px' }}>
+                <Image
+                  src="/images/logo.png"
+                  alt="Smash&Fun Logo"
+                  width={150}
+                  height={40}
+                  style={{ width: '150px', height: '40px', objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </Link>
             <p className="text-white/70 text-sm leading-relaxed">
               {t('footer.description')}

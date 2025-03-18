@@ -46,9 +46,8 @@ export default function CookieConsent() {
         localStorage.removeItem('cookieConsent');
         setShowBanner(true);
       }
-    } catch (error) {
+    } catch {
       // Если возникла ошибка при парсинге JSON, сбрасываем к настройкам по умолчанию
-      console.error('Error parsing cookie consent:', error);
       localStorage.removeItem('cookieConsent');
       setShowBanner(true);
     }
@@ -58,60 +57,41 @@ export default function CookieConsent() {
     const allAccepted = {
       necessary: true,
       analytics: true,
-      marketing: true,
+      marketing: true
     };
     try {
-      // Получаем текущие настройки из localStorage
-      const currentConsent = localStorage.getItem('cookieConsent');
-      const currentSettings = currentConsent ? JSON.parse(currentConsent) : defaultSettings;
-      
-      // Сохраняем новые настройки
       localStorage.setItem('cookieConsent', JSON.stringify(allAccepted));
       setSettings(allAccepted);
       setShowBanner(false);
-      
-      // Если настройки аналитики изменились, перезагружаем страницу для применения изменений
-      if (currentSettings?.analytics !== allAccepted.analytics) {
-        // Задержка перед перезагрузкой, чтобы модальное окно успело закрыться
-        setTimeout(() => {
-          window.location.reload();
-        }, 300);
-      }
-    } catch (error) {
-      console.error('Error saving cookie consent:', error);
+      setShowSettings(false);
+    } catch {
+      // Ошибка сохранения согласия
     }
   };
 
   const handleSaveSettings = () => {
     try {
-      // Получаем текущие настройки из localStorage
-      const currentConsent = localStorage.getItem('cookieConsent');
-      const currentSettings = currentConsent ? JSON.parse(currentConsent) : defaultSettings;
-      
-      // Сохраняем новые настройки
       localStorage.setItem('cookieConsent', JSON.stringify(settings));
       setShowBanner(false);
       setShowSettings(false);
-      
-      // Если настройки аналитики изменились, перезагружаем страницу для применения изменений
-      if (currentSettings?.analytics !== settings.analytics) {
-        // Задержка перед перезагрузкой, чтобы модальное окно успело закрыться
-        setTimeout(() => {
-          window.location.reload();
-        }, 300);
-      }
-    } catch (error) {
-      console.error('Error saving cookie settings:', error);
+    } catch {
+      // Ошибка сохранения настроек
     }
   };
 
   const handleRejectAll = () => {
+    const allRejected = {
+      necessary: true, // Необходимые куки всегда включены
+      analytics: false,
+      marketing: false
+    };
     try {
-      localStorage.setItem('cookieConsent', JSON.stringify(defaultSettings));
-      setSettings(defaultSettings);
+      localStorage.setItem('cookieConsent', JSON.stringify(allRejected));
+      setSettings(allRejected);
       setShowBanner(false);
-    } catch (error) {
-      console.error('Error rejecting cookies:', error);
+      setShowSettings(false);
+    } catch {
+      // Ошибка сохранения отказа от куки
     }
   };
 

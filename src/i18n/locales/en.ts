@@ -16,7 +16,11 @@ export const en = {
     organizeParty: 'ORGANIZE PARTY',
     blog: 'BLOG',
     faq: 'FAQ',
-    contact: 'CONTACT'
+    contact: 'CONTACT',
+    organizePartyDropdown: {
+      b2b: 'Corporate clients B2B',
+      b2c: 'Private clients B2C'
+    }
   },
   home: {
     hero: {
@@ -454,6 +458,115 @@ export const en = {
           title: 'Music Setup',
           description: 'Professional audio equipment and playlist'
         }
+      }
+    }
+  },
+  b2b: {
+    hero: {
+      title: 'CORPORATE CLIENTS B2B',
+      subtitle: 'Special offer for companies and organizations - create an unforgettable event for your team',
+      cta: 'Contact us'
+    },
+    description: {
+      title: 'UNIQUE BUSINESS SOLUTIONS',
+      paragraph1: 'Looking for a non-standard idea for team integration or a corporate event? Smash&Fun is the perfect choice for companies wanting to offer their employees or clients a unique and energizing experience.',
+      paragraph2: 'We provide comprehensive organization of corporate events, including integration parties, team building activities, and events for clients and business partners. Our experience and professional approach guarantee the success of every corporate event.',
+      uniqueExperiences: 'Unique experiences',
+      forYourTeam: 'for your team'
+    },
+    benefits: {
+      benefit1: {
+        title: 'Customization',
+        description: 'Full personalization of our offer to meet your company\'s specific requirements'
+      },
+      benefit2: {
+        title: 'Large Groups',
+        description: 'Ability to organize events for groups of various sizes'
+      },
+      benefit3: {
+        title: 'Flexible Scheduling',
+        description: 'Convenient dates adapted to your company\'s calendar'
+      }
+    },
+    serviceTypes: {
+      teamBuilding: {
+        title: 'Team Building',
+        description: 'Strengthen team bonds through shared experiences. Perfect for both new and existing teams.',
+        features: [
+          'Employee integration and trust building',
+          'Development of communication and collaboration skills',
+          'Stress and tension relief in the team',
+          'Fun activities that improve workplace atmosphere'
+        ]
+      },
+      corporateEvents: {
+        title: 'Corporate Events',
+        description: 'Organize a unique event for employees, clients, or business partners.',
+        features: [
+          'Professional service and attractive program',
+          'Catering and music arrangements upon request',
+          'Possibility to organize private corporate parties',
+          'Unique way to thank business partners'
+        ]
+      },
+      integration: {
+        title: 'Integration',
+        description: 'Integrate your team in an unusual and exciting way. Perfect for relationship building.',
+        features: [
+          'Improved communication and team atmosphere',
+          'Interesting integration exercises and group challenges',
+          'Ability to customize activities to team goals',
+          'Program suitable for different age groups and professions'
+        ]
+      }
+    },
+    stats: {
+      satisfiedClients: 'Satisfied clients',
+      completedEvents: 'Completed events',
+      participants: 'Participants',
+      yearsExperience: 'Years experience'
+    },
+    form: {
+      title: 'REQUEST A CORPORATE OFFER',
+      subtitle: 'Fill out the form below, and our team will contact you to discuss details and provide a personalized offer.',
+      success: 'Thank you for your inquiry! We will contact you as soon as possible.',
+      submit: 'SEND INQUIRY',
+      sending: 'Sending...',
+      name: {
+        label: 'Full Name',
+        placeholder: 'Enter your full name'
+      },
+      email: {
+        label: 'Email',
+        placeholder: 'Enter your email address'
+      },
+      phone: {
+        label: 'Phone Number',
+        placeholder: 'Enter your phone number'
+      },
+      service: {
+        label: 'Which service are you interested in?',
+        placeholder: 'E.g. corporate integration, team building, client event'
+      },
+      people: {
+        label: 'Number of People',
+        placeholder: 'Provide approximate number of participants'
+      },
+      date: {
+        label: 'Preferred Date',
+        placeholder: 'Choose your preferred date'
+      },
+      message: {
+        label: 'Additional Information (optional)',
+        placeholder: 'You can provide additional information or requirements here'
+      },
+      validation: {
+        name: 'Full name is required',
+        email: 'Please enter a valid email address',
+        phone: 'Please enter a valid phone number',
+        service: 'Please specify the service you are interested in',
+        people: 'Please provide the approximate number of participants',
+        date: 'Please select your preferred date'
       }
     }
   },

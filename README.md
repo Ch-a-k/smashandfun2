@@ -35,3 +35,36 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 # smashandfun2
+
+## Локализация / Localization
+
+Проект поддерживает многоязычность (Polish / English) с использованием i18n. Все тексты должны быть добавлены в файлы локализации:
+
+- `src/i18n/locales/pl.ts` - для польского языка
+- `src/i18n/locales/en.ts` - для английского языка
+
+Для доступа к переводам в компонентах используйте хук `useTranslations()`.
+
+## Изображения / Images
+
+### Декоративные элементы / Decorative elements
+- `1.png`, `2o.png`, `3o.png`, `4o.png`, `5o.png`, `6o.png` - стеклянные осколки для анимированных элементов
+- `glass-shard-1.png` - `glass-shard-6.png` - альтернативные версии стеклянных осколков
+- `noise.png` - текстура шума для фона
+
+### Иконки и логотипы / Icons and logos
+- `logo.png` - логотип компании
+- `partner1.png`, `partner2.png` - логотипы партнеров
+
+### Основные изображения / Main images
+- `corporate.png` - изображение для корпоративных клиентов (Team Building)
+- `party.png` - изображение для корпоративных мероприятий
+- `smile.png` - изображение для интеграционных мероприятий
+- `kids.png` - изображение для детских мероприятий
+- `heart.png` - изображение для мероприятий для пар
+- `round.png` - круглое декоративное изображение
+- `voucher.png` - изображение для подарочных сертификатов
+
+### Навигационные элементы / Navigation elements
+- `down.png` - стрелка вниз
+- `turn-left.png`, `turn-right.png` - стрелки поворота

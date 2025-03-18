@@ -18,7 +18,6 @@ export default function HappyHoursModal({ isOpen, onClose }: HappyHoursModalProp
   // Загружаем компонент только на клиенте
   useEffect(() => {
     setMounted(true);
-    console.log('HappyHoursModal mounted');
   }, []);
 
   // Устанавливаем задержку для анимации при закрытии
@@ -39,34 +38,31 @@ export default function HappyHoursModal({ isOpen, onClose }: HappyHoursModalProp
     if (!mounted) return;
     
     try {
-      console.log('Loading benefits from i18n...');
       const benefitsData = t('happyHours.benefits', { returnObjects: true });
-      console.log('Benefits data received:', benefitsData);
       
       if (Array.isArray(benefitsData)) {
         setBenefits(benefitsData);
       } else {
-        console.error('happyHours.benefits is not an array:', benefitsData);
+        // Если данные не в формате массива, используем значения по умолчанию
         setBenefits(['Lower prices', 'Less crowded', 'Same great experience', 'Full equipment included']);
       }
-    } catch (error) {
-      console.error('Error loading benefits:', error);
+    } catch {
+      // При ошибке загрузки используем значения по умолчанию
       setBenefits(['Lower prices', 'Less crowded', 'Same great experience', 'Full equipment included']);
     }
   }, [t, mounted]);
 
   // Следим за изменениями состояния открытия модального окна
   useEffect(() => {
-    console.log('HappyHoursModal isOpen changed:', isOpen);
+    // Состояние открытия модального окна изменилось
   }, [isOpen]);
 
   const handleBooking = () => {
     try {
-      console.log('Opening booking page...');
       window.open('https://smashandfun.simplybook.it/v2/#book/count/1/', '_blank');
       onClose();
-    } catch (error) {
-      console.error('Error opening booking page:', error);
+    } catch {
+      // Обрабатываем ошибку открытия страницы бронирования
     }
   };
 

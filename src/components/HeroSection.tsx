@@ -68,8 +68,8 @@ function VideoBackground() {
     const video = videoRef.current
     if (!video) return
 
-    const handleError = (e: Event) => {
-      console.error('Video error:', e.type)
+    const handleError = () => {
+      // Ошибка загрузки видео
     }
 
     video.addEventListener('error', handleError)
@@ -85,7 +85,7 @@ function VideoBackground() {
         loop
         muted
         playsInline
-        onError={(e) => console.error('Video error:', e)}
+        onError={() => {/* Обработка ошибки видео */}}
       >
         {VIDEO_SOURCES.map(({ src, type }) => (
           <source key={src} src={src} type={type} />

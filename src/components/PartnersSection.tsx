@@ -37,6 +37,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
           src={partner.logo}
           alt={t(`home.partners.${partner.key}.name`)}
           fill
+          sizes="(max-width: 768px) 100vw, 30vw"
           className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
         />
       </div>

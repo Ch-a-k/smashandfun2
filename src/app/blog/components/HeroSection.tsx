@@ -27,6 +27,7 @@ export function BlogHeroSection() {
             src={image.src}
             alt=""
             fill
+            sizes="(max-width: 768px) 100px, 150px"
             className="object-contain"
           />
         </div>

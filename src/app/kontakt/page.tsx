@@ -12,6 +12,8 @@ import { useI18n } from '@/i18n/I18nContext';
 export default function Kontakt() {
   const { t } = useI18n();
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isError, setIsError] = useState(false);
   
   // Схема валидации формы с использованием переводов
   const formSchema = z.object({
@@ -34,26 +36,14 @@ export default function Kontakt() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message || 'Произошла ошибка при отправке сообщения');
-      }
-
+      await submitContactForm(data);
+      setIsSubmitting(false);
       setIsSuccess(true);
       reset();
-      setTimeout(() => setIsSuccess(false), 5000);
-    } catch (error) {
-      console.error('Ошибка при отправке формы:', error);
-      // Здесь можно добавить обработку ошибок, например, показать сообщение пользователю
+    } catch {
+      // Обработка ошибки при отправке формы
+      setIsSubmitting(false);
+      setIsError(true);
     }
   };
 

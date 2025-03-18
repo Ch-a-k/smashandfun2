@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useI18n } from '@/i18n/I18nContext';
 import LanguageSwitcher from './LanguageSwitcher';
-import { Clock } from 'lucide-react';
+import { Clock, ChevronDown } from 'lucide-react';
 import HappyHoursModal from './HappyHoursModal';
 
 // Функция для установки куки
@@ -41,6 +41,8 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHappyHoursOpen, setIsHappyHoursOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { t } = useI18n();
 
@@ -54,8 +56,6 @@ export default function Header() {
       const lastClosedTime = getCookie('happyHoursLastClosed');
       const shouldShowModal = !lastClosedTime || (Date.now() - parseInt(lastClosedTime)) > 24 * 60 * 60 * 1000;
       
-      console.log('Should show HappyHours modal on load:', shouldShowModal);
-      
       // Если прошло более 24 часов или пользователь еще не закрывал модальное окно
       if (shouldShowModal) {
         // Задержка для обеспечения корректной загрузки страницы
@@ -65,14 +65,15 @@ export default function Header() {
         
         return () => clearTimeout(timer);
       }
-    } catch (error) {
-      console.error('Error checking HappyHours cookie:', error);
+    } catch {
+      // Ошибка при проверке куки
+      setIsHappyHoursOpen(false);
     }
   }, []);
 
-  // Добавляем диагностику для отслеживания состояния модального окна
+  // Отслеживаем состояние модального окна
   useEffect(() => {
-    console.log('Header: HappyHours modal state changed:', isHappyHoursOpen);
+    // Состояние модального окна изменилось
   }, [isHappyHoursOpen]);
 
   useEffect(() => {
@@ -108,9 +109,30 @@ export default function Header() {
     }
   }, [isMobileMenuOpen]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navLinks = [
     { href: '/', label: t('nav.home') },
-    { href: '/organizacja-imprez', label: t('nav.organizeParty') },
+    { 
+      label: t('nav.organizeParty'),
+      isDropdown: true,
+      dropdownItems: [
+        { href: '/organizacja-imprez', label: t('nav.organizePartyDropdown.b2c') },
+        { href: '/organizacja-imprez-b2b', label: t('nav.organizePartyDropdown.b2b') },
+      ]
+    },
     { href: '/blog', label: t('nav.blog') },
     { href: '/faq', label: t('nav.faq') },
     { href: '/kontakt', label: t('nav.contact') },
@@ -124,24 +146,19 @@ export default function Header() {
   const openHappyHours = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log('Header: Opening HappyHours modal');
-    setIsHappyHoursOpen(prev => {
-      console.log('Header: Setting HappyHours modal to:', !prev);
-      return !prev;
-    });
+    setIsHappyHoursOpen(prev => !prev);
     setIsMobileMenuOpen(false);
   };
 
   // Функция закрытия модального окна с сохранением времени в куки
   const closeHappyHours = () => {
     try {
-      console.log('Header: Closing HappyHours modal and saving timestamp in cookie');
       // Сохраняем текущее время закрытия в куки (срок действия 30 дней, но проверка через 24 часа)
       const timestamp = Date.now().toString();
       setCookie('happyHoursLastClosed', timestamp, 30);
       setIsHappyHoursOpen(false);
-    } catch (error) {
-      console.error('Error saving HappyHours cookie:', error);
+    } catch {
+      // Ошибка при сохранении куки
       setIsHappyHoursOpen(false);
     }
   };
@@ -156,34 +173,64 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-10">
+            <div style={{ width: '150px', height: '40px' }}>
             <Image
-              src="/images/logo.png"
-              alt="Smash&Fun Logo"
-              width={150}
-              height={40}
-              className="h-10 w-auto"
-              priority
-            />
+                  src="/images/logo.png"
+                  alt="Smash&Fun Logo"
+                  width={150}
+                  height={40}
+                  style={{ width: '150px', height: '40px', objectFit: 'contain' }}
+                  priority
+                />
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={` text-lg font-impact uppercase tracking-wide transition-colors ${
-                  pathname === link.href
-                    ? 'text-[#f36e21]'
-                    : 'text-white hover:text-[#f36e21]'
-                }`}
-              >
-                {link.label}
-              </Link>
+            {navLinks.map((link, index) => (
+              link.isDropdown ? (
+                <div key={`dropdown-${index}`} className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className={`flex items-center gap-1 text-lg font-impact uppercase tracking-wide transition-colors ${
+                      pathname.includes('/organizacja-imprez') ? 'text-[#f36e21]' : 'text-white hover:text-[#f36e21]'
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                  
+                  {isDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-2 w-64 bg-[#1a1718] rounded-lg overflow-hidden shadow-xl">
+                      {link.dropdownItems?.map((item, itemIndex) => (
+                        <Link
+                          key={`dropdown-item-${itemIndex}`}
+                          href={item.href as string}
+                          onClick={() => setIsDropdownOpen(false)}
+                          className={`block px-4 py-3 text-sm uppercase transition-colors ${
+                            pathname === item.href ? 'bg-[#2c2528] text-[#f36e21]' : 'text-white hover:bg-[#2c2528] hover:text-[#f36e21]'
+                          }`}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link
+                  key={link.href as string}
+                  href={link.href as string}
+                  className={`text-lg font-impact uppercase tracking-wide transition-colors ${
+                    pathname === link.href
+                      ? 'text-[#f36e21]'
+                      : 'text-white hover:text-[#f36e21]'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
-            
-            
-            
           </nav>
 
           <div className="flex items-center space-x-4">
@@ -250,24 +297,71 @@ export default function Header() {
               <nav className="w-full min-h-screen px-6 py-36">
                 <div className="flex flex-col items-center space-y-5">
                   {navLinks.map((link, index) => (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`text-lg font-impact uppercase tracking-wide transition-colors ${
-                          pathname === link.href
-                            ? 'text-[#f36e21]'
-                            : 'text-white hover:text-[#f36e21]'
-                        }`}
+                    link.isDropdown ? (
+                      <motion.div
+                        key={`mobile-dropdown-${index}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex flex-col items-center"
                       >
-                        {link.label}
-                      </Link>
-                    </motion.div>
+                        <button
+                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          className={`flex items-center gap-1 text-lg font-impact uppercase tracking-wide transition-colors ${
+                            pathname.includes('/organizacja-imprez') ? 'text-[#f36e21]' : 'text-white hover:text-[#f36e21]'
+                          }`}
+                        >
+                          {link.label}
+                          <ChevronDown className="w-4 h-4" />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {isDropdownOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="mt-3 flex flex-col items-center space-y-3"
+                            >
+                              {link.dropdownItems?.map((item, itemIndex) => (
+                                <Link
+                                  key={`mobile-dropdown-item-${itemIndex}`}
+                                  href={item.href as string}
+                                  onClick={() => {
+                                    setIsDropdownOpen(false);
+                                    setIsMobileMenuOpen(false);
+                                  }}
+                                  className={`text-sm font-impact uppercase tracking-wide transition-colors ${
+                                    pathname === item.href ? 'text-[#f36e21]' : 'text-gray-300 hover:text-[#f36e21]'
+                                  }`}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key={link.href as string}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        <Link
+                          href={link.href as string}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`text-lg font-impact uppercase tracking-wide transition-colors ${
+                            pathname === link.href
+                              ? 'text-[#f36e21]'
+                              : 'text-white hover:text-[#f36e21]'
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      </motion.div>
+                    )
                   ))}
                   
                   <motion.div 

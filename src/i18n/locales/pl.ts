@@ -34,7 +34,11 @@ export const pl = {
     organizeParty: 'ORGANIZACJA IMPREZ',
     blog: 'BLOG',
     faq: 'FAQ',
-    contact: 'KONTAKT'
+    contact: 'KONTAKT',
+    organizePartyDropdown: {
+      b2b: 'Klienci korporacyjni B2B',
+      b2c: 'Klienci indywidualni B2C'
+    }
   },
   home: {
     hero: {
@@ -472,6 +476,115 @@ export const pl = {
           title: 'Oprawa muzyczna',
           description: 'Profesjonalny sprzęt audio i playlista'
         }
+      }
+    }
+  },
+  b2b: {
+    hero: {
+      title: 'KLIENCI KORPORACYJNI B2B',
+      subtitle: 'Specjalna oferta dla firm i organizacji - stwórz niezapomniane wydarzenie dla swojego zespołu',
+      cta: 'Skontaktuj się z nami'
+    },
+    description: {
+      title: 'WYJĄTKOWE ROZWIĄZANIA DLA BIZNESU',
+      paragraph1: 'Szukasz niestandardowego pomysłu na integrację zespołu lub event firmowy? Smash&Fun to idealny wybór dla firm, które chcą zaoferować swoim pracownikom lub klientom wyjątkowe i energetyzujące doświadczenie.',
+      paragraph2: 'Oferujemy kompleksową organizację wydarzeń firmowych, w tym imprezy integracyjne, team building, eventy dla klientów i partnerów biznesowych. Nasze doświadczenie i profesjonalne podejście gwarantują sukces każdego wydarzenia korporacyjnego.',
+      uniqueExperiences: 'Unikalne doświadczenia',
+      forYourTeam: 'dla Twojego zespołu'
+    },
+    benefits: {
+      benefit1: {
+        title: 'Dostosowanie do potrzeb',
+        description: 'Pełna personalizacja oferty pod specyficzne wymagania Twojej firmy'
+      },
+      benefit2: {
+        title: 'Duże grupy',
+        description: 'Możliwość organizacji wydarzeń dla grup o różnej wielkości'
+      },
+      benefit3: {
+        title: 'Elastyczne terminy',
+        description: 'Dogodne terminy dostosowane do kalendarza Twojej firmy'
+      }
+    },
+    serviceTypes: {
+      teamBuilding: {
+        title: 'Team Building',
+        description: 'Wzmocnij więzi w zespole poprzez wspólne doświadczenia. Idealne dla nowych i istniejących zespołów.',
+        features: [
+          'Integracja pracowników i budowanie zaufania',
+          'Rozwój umiejętności komunikacyjnych i współpracy',
+          'Rozładowanie stresu i napięcia w zespole',
+          'Wspólna zabawa poprawiająca atmosferę pracy'
+        ]
+      },
+      corporateEvents: {
+        title: 'Eventy Firmowe',
+        description: 'Zorganizuj wyjątkowe wydarzenie dla pracowników, klientów lub partnerów biznesowych.',
+        features: [
+          'Profesjonalna obsługa i atrakcyjny program',
+          'Catering i oprawa muzyczna na życzenie',
+          'Możliwość organizacji zamkniętych imprez firmowych',
+          'Unikalny pomysł na podziękowanie dla partnerów biznesowych'
+        ]
+      },
+      integration: {
+        title: 'Integracja',
+        description: 'Zintegruj swój zespół w nietypowy i emocjonujący sposób. Doskonałe do budowania relacji.',
+        features: [
+          'Poprawa komunikacji i atmosfery w zespole',
+          'Ciekawe ćwiczenia integracyjne i wyzwania dla grup',
+          'Możliwość dostosowania aktywności do celów zespołu',
+          'Program dopasowany do różnych grup wiekowych i zawodowych'
+        ]
+      }
+    },
+    stats: {
+      satisfiedClients: 'Zadowolonych klientów',
+      completedEvents: 'Zrealizowanych eventów',
+      participants: 'Uczestników',
+      yearsExperience: 'Lata doświadczenia'
+    },
+    form: {
+      title: 'ZAPYTAJ O OFERTĘ DLA FIRM',
+      subtitle: 'Wypełnij formularz poniżej, a nasz zespół skontaktuje się z Tobą, aby omówić szczegóły i przedstawić spersonalizowaną ofertę.',
+      success: 'Dziękujemy za wysłanie zapytania! Skontaktujemy się z Tobą najszybciej jak to możliwe.',
+      submit: 'WYŚLIJ ZAPYTANIE',
+      sending: 'Wysyłanie...',
+      name: {
+        label: 'Imię i nazwisko',
+        placeholder: 'Wpisz swoje imię i nazwisko'
+      },
+      email: {
+        label: 'E-mail',
+        placeholder: 'Wpisz swój adres e-mail'
+      },
+      phone: {
+        label: 'Numer telefonu',
+        placeholder: 'Wpisz swój numer telefonu'
+      },
+      service: {
+        label: 'Jaka usługa Cię interesuje?',
+        placeholder: 'Np. integracja firmowa, team building, event dla klientów'
+      },
+      people: {
+        label: 'Liczba osób',
+        placeholder: 'Podaj przybliżoną liczbę uczestników'
+      },
+      date: {
+        label: 'Preferowana data',
+        placeholder: 'Wybierz preferowaną datę'
+      },
+      message: {
+        label: 'Dodatkowe informacje (opcjonalnie)',
+        placeholder: 'Tutaj możesz podać dodatkowe informacje lub wymagania'
+      },
+      validation: {
+        name: 'Imię i nazwisko jest wymagane',
+        email: 'Wprowadź poprawny adres e-mail',
+        phone: 'Wprowadź poprawny numer telefonu',
+        service: 'Podaj rodzaj usługi, która Cię interesuje',
+        people: 'Podaj przybliżoną liczbę uczestników',
+        date: 'Wybierz preferowaną datę wydarzenia'
       }
     }
   },

@@ -22,24 +22,16 @@ const akrobat = localFont({
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Smash&Fun - Rage Room #1 in Warsaw',
-  description: 'Release stress and emotions in the most exciting way! Visit our rage room in Warsaw.',
+  metadataBase: new URL('https://smashandfun.pl'),
+  title: 'Smash&Fun',
+  description: 'Smash&Fun - Twoje miejsce na niezapomniane wrażenia',
   openGraph: {
-    type: 'website',
-    locale: 'pl_PL',
-    alternateLocale: 'en_US',
+    title: 'Smash&Fun',
+    description: 'Smash&Fun - Twoje miejsce na niezapomniane wrażenia',
     url: 'https://smashandfun.pl',
-    title: 'Smash&Fun - Rage Room #1 in Warsaw',
-    description: 'Release stress and emotions in the most exciting way! Visit our rage room in Warsaw.',
     siteName: 'Smash&Fun',
-    images: [
-      {
-        url: '/og/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Smash&Fun - Rage Room',
-      },
-    ],
+    locale: 'pl_PL',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
