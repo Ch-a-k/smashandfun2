@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
+import Image from 'next/image';
 import { useI18n } from '@/i18n/I18nContext';
 
 const decorativeImages = [
-  { src: '/images/turn-left.png', className: 'top-[5%] left-[15%] w-20 h-20', sizes: '5rem' },
-  { src: '/images/6o.png', className: 'top-[40%] left-[8%] w-16 h-16', sizes: '4rem' },
-  { src: '/images/1.png', className: 'top-[65%] right-[20%] w-24 h-24', sizes: '6rem' },
-  { src: '/images/down.png', className: 'top-[75%] left-[50%] w-20 h-20 -translate-x-1/2', sizes: '5rem' },
-  { src: '/images/turn-right.png', className: 'top-[25%] right-[12%] w-12 h-12', sizes: '3rem' }
+  { src: '/images/turn-left.png', className: 'top-[5%] left-[15%] w-20 h-20' },
+  { src: '/images/6o.png', className: 'top-[40%] left-[8%] w-16 h-16' },
+  { src: '/images/1.png', className: 'top-[65%] right-[20%] w-24 h-24' },
+  { src: '/images/down.png', className: 'top-[75%] left-[50%] w-20 h-20 -translate-x-1/2' },
+  { src: '/images/turn-right.png', className: 'top-[25%] right-[12%] w-12 h-12' }
 ];
 
 export function BlogHeroSection() {
@@ -23,11 +23,10 @@ export function BlogHeroSection() {
       {/* Decorative background images */}
       {decorativeImages.map((image, index) => (
         <div key={index} className={`absolute opacity-90 pointer-events-none ${image.className}`}>
-          <ResponsiveImage
+          <Image
             src={image.src}
             alt=""
             fill
-            sizes={image.sizes}
             className="object-contain"
           />
         </div>

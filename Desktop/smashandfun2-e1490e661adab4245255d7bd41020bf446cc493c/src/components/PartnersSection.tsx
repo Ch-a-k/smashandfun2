@@ -36,8 +36,6 @@ function PartnerCard({ partner }: { partner: Partner }) {
         <ResponsiveImage
           src={partner.logo}
           alt={t(`home.partners.${partner.key}.name`)}
-          width={200}
-          height={100}
           className="object-contain p-4 group-hover:scale-110 transition-transform duration-300"
         />
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { ResponsiveImage } from '@/components/ui/ResponsiveImage';
+import Image from 'next/image';
 import { BlogPost } from '@/types/blog';
 import { useI18n } from '@/i18n/I18nContext';
 
@@ -36,11 +36,10 @@ export function BlogPostCard({ post, index, onPostClick }: BlogPostCardProps) {
           className="relative aspect-video rounded-2xl overflow-hidden cursor-pointer" 
           onClick={() => onPostClick(post)}
         >
-          <ResponsiveImage
+          <Image
             src={post.image}
             alt={post.title}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover transform hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1a1718] to-transparent opacity-60" />

@@ -10,7 +10,7 @@ export function CTASection() {
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-[#1a1718] to-[#231f20]">
       {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('/images/texture.png')] bg-repeat opacity-20"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4">

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { BlogPost } from '@/types/blog';
-import { ResponsiveImage } from './ui/ResponsiveImage';
+import Image from 'next/image';
 import { Clock, Calendar, X } from 'lucide-react';
 import { useEffect } from 'react';
 import { useI18n } from '@/i18n/I18nContext';
@@ -68,11 +68,10 @@ export default function BlogPostPopup({ post, onClose }: BlogPostPopupProps) {
 
           {/* Обложка статьи */}
           <div className="relative w-full h-60 sm:h-72 md:h-96">
-            <ResponsiveImage
+            <Image
               src={post.image}
               alt={post.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
               className="object-cover"
               priority
             />
